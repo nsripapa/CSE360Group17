@@ -13,7 +13,7 @@ public class Main extends Application {
 		try {
 			
 			Parent root = FXMLLoader.load(getClass().getResource("EffortConsole.fxml"));
-			Scene scene = new Scene(root,1200,800);
+			Scene scene = new Scene(root,1200,800); //1200x800 window
 			
 			stage.setTitle("EffortLogger V2");
 			stage.setResizable(false);

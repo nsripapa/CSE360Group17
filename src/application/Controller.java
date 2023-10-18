@@ -22,7 +22,7 @@ public class Controller {
 	public void goToEffortConsole(ActionEvent e) throws IOException
 	{
 
-		Parent root = FXMLLoader.load(getClass().getResource("EffortConsole.fxml"));
+		root = FXMLLoader.load(getClass().getResource("EffortConsole.fxml"));
 		stage = (Stage)((Node)e.getSource()).getScene().getWindow();
 		scene = new Scene(root);
 		stage.setScene(scene);
@@ -34,7 +34,7 @@ public class Controller {
 	public void goToEffortLogEditor(ActionEvent e) throws IOException
 	{
 		
-		Parent root = FXMLLoader.load(getClass().getResource("EffortLogEditor.fxml"));
+		root = FXMLLoader.load(getClass().getResource("EffortLogEditor.fxml"));
 		stage = (Stage)((Node)e.getSource()).getScene().getWindow();
 		scene = new Scene(root);
 		stage.setScene(scene);
@@ -46,7 +46,7 @@ public class Controller {
 	public void goToDefectConsole(ActionEvent e) throws IOException
 	{
 		
-		Parent root = FXMLLoader.load(getClass().getResource("DefectConsole.fxml"));
+		root = FXMLLoader.load(getClass().getResource("DefectConsole.fxml"));
 		stage = (Stage)((Node)e.getSource()).getScene().getWindow();
 		scene = new Scene(root);
 		stage.setScene(scene);
@@ -58,7 +58,7 @@ public class Controller {
 	public void goToLogs(ActionEvent e) throws IOException
 	{
 		
-		Parent root = FXMLLoader.load(getClass().getResource("Logs.fxml"));
+		root = FXMLLoader.load(getClass().getResource("Logs.fxml"));
 		stage = (Stage)((Node)e.getSource()).getScene().getWindow();
 		scene = new Scene(root);
 		stage.setScene(scene);
@@ -70,7 +70,7 @@ public class Controller {
 	public void goToDefinitions(ActionEvent e) throws IOException
 	{
 		
-		Parent root = FXMLLoader.load(getClass().getResource("Definitions.fxml"));
+		root = FXMLLoader.load(getClass().getResource("Definitions.fxml"));
 		stage = (Stage)((Node)e.getSource()).getScene().getWindow();
 		scene = new Scene(root);
 		stage.setScene(scene);
@@ -82,7 +82,7 @@ public class Controller {
 	public void goToLogManager(ActionEvent e) throws IOException
 	{
 		
-		Parent root = FXMLLoader.load(getClass().getResource("LogManager.fxml"));
+		root = FXMLLoader.load(getClass().getResource("LogManager.fxml"));
 		stage = (Stage)((Node)e.getSource()).getScene().getWindow();
 		scene = new Scene(root);
 		stage.setScene(scene);
