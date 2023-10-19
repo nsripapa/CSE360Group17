@@ -102,5 +102,37 @@ public class ControllerMenuBar extends Controller
 
 	}
 
-	
+	//keep the tab for the active scene "darkened"
+	public void manageButtons(String scene)
+	{
+		buttonEffortConsole.getStyleClass().removeAll("selected-button");
+		buttonEffortLogEditor.getStyleClass().removeAll("selected-button");
+		buttonDefectConsole.getStyleClass().removeAll("selected-button");
+		buttonLogs.getStyleClass().removeAll("selected-button");
+		buttonDefinitions.getStyleClass().removeAll("selected-button");
+		buttonLogManager.getStyleClass().removeAll("selected-button");
+		
+		switch(scene)
+		{
+			case ("EffortConsole"):
+				buttonEffortConsole.getStyleClass().add("selected-button");
+				break;
+			case ("EffortLogEditor"):
+				buttonEffortLogEditor.getStyleClass().add("selected-button");
+				break;
+			case ("DefectConsole"):
+				buttonDefectConsole.getStyleClass().add("selected-button");
+				break;
+			case ("Logs"):
+				buttonLogs.getStyleClass().add("selected-button");
+				break;
+			case ("Definitions"):
+				buttonDefinitions.getStyleClass().add("selected-button");
+				break;
+			case ("LogManager"):
+				buttonLogManager.getStyleClass().add("selected-button");
+				break;
+		}
+		
+	}
 }

@@ -5,14 +5,11 @@
 
 <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ControllerMenuBar">
    <children>
-      <Button fx:id="buttonEffortConsole" mnemonicParsing="false" onMouseClicked="#goToEffortConsole" prefHeight="45.0" prefWidth="170.0" stylesheets="@application.css" text="Effort Console" />
-      <Button fx:id="buttonEffortLogEditor" mnemonicParsing="false" onMouseClicked="#goToEffortLogEditor" prefHeight="45.0" prefWidth="170.0" stylesheets="@application.css" text="Effort Log Editor" />
-      <Button fx:id="buttonDefectConsole" mnemonicParsing="false" onMouseClicked="#goToDefectConsole" prefHeight="45.0" prefWidth="170.0" stylesheets="@application.css" text="Defect Console" />
-      <Button fx:id="buttonLogs" mnemonicParsing="false" onMouseClicked="#goToLogs" prefHeight="45.0" prefWidth="170.0" stylesheets="@application.css" text="Logs" />
-      <Button fx:id="buttonDefinitions" mnemonicParsing="false" onMouseClicked="#goToDefinitions" prefHeight="45.0" prefWidth="170.0" stylesheets="@application.css" text="Definitions" />
-      <Button fx:id="buttonLogManager" mnemonicParsing="false" onMouseClicked="#goToLogManager" prefHeight="45.0" prefWidth="170.0" stylesheets="@application.css" text="LogManager" />
-      <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="170.0" stylesheets="@application.css" text="Button" />
-      <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="170.0" stylesheets="@application.css" text="Button" />
-      <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="170.0" stylesheets="@application.css" text="Button" />
+      <Button fx:id="buttonEffortConsole" mnemonicParsing="false" onMouseClicked="#goToEffortConsole" prefHeight="45.0" prefWidth="200.0" stylesheets="@application.css" text="Effort Console" />
+      <Button fx:id="buttonEffortLogEditor" mnemonicParsing="false" onMouseClicked="#goToEffortLogEditor" prefHeight="45.0" prefWidth="200.0" stylesheets="@application.css" text="Effort Log Editor" />
+      <Button fx:id="buttonDefectConsole" mnemonicParsing="false" onMouseClicked="#goToDefectConsole" prefHeight="45.0" prefWidth="200.0" stylesheets="@application.css" text="Defect Console" />
+      <Button fx:id="buttonLogs" mnemonicParsing="false" onMouseClicked="#goToLogs" prefHeight="45.0" prefWidth="200.0" stylesheets="@application.css" text="Logs" />
+      <Button fx:id="buttonDefinitions" mnemonicParsing="false" onMouseClicked="#goToDefinitions" prefHeight="45.0" prefWidth="200.0" stylesheets="@application.css" text="Definitions" />
+      <Button fx:id="buttonLogManager" mnemonicParsing="false" onMouseClicked="#goToLogManager" prefHeight="45.0" prefWidth="200.0" stylesheets="@application.css" text="LogManager" />
    </children>
 </HBox>
