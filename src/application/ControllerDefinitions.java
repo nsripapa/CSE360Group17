@@ -1,5 +1,6 @@
 package application;
 
-public class ControllerDefinitions extends Controller {
+public class ControllerDefinitions extends Controller 
+{
 
 }

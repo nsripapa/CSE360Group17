@@ -1,5 +1,6 @@
 package application;
 
-public class ControllerLogs extends Controller {
+public class ControllerLogs extends Controller 
+{
 
 }

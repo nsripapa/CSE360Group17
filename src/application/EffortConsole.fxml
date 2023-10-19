@@ -5,6 +5,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ControllerEffortConsole">
    <children>
-      <Button layoutX="550.0" layoutY="295.0" mnemonicParsing="false" onMouseClicked="#startActivity" text="Start An Activity" />
+      <Button layoutX="542.0" layoutY="301.0" mnemonicParsing="false" onMouseClicked="#startActivity" text="Start An Activity" />
+      <fx:include source="MenuBar.fxml" />
    </children>
 </AnchorPane>

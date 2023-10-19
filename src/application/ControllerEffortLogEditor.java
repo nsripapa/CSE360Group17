@@ -1,5 +1,6 @@
 package application;
 
-public class ControllerEffortLogEditor extends Controller {
+public class ControllerEffortLogEditor extends Controller 
+{
 
 }
