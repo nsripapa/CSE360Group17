@@ -8,32 +8,36 @@ import java.time.LocalTime;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.input.MouseEvent;
 
 public class ControllerEffortConsole extends Controller implements Initializable 
 {
-	LocalTime startTime, endTime, elapsed; int elapsedMinutes, elapsedSeconds, elapsedHours;
+	LocalTime startTime, endTime; int elapsedMinutes, elapsedSeconds, elapsedHours;
 	LocalDate date;
 	@FXML
 	private ControllerMenuBar menuBarController;
 	
 	
-	public void startActivity(MouseEvent e) {
+	
+	public void startActivity(ActionEvent e) {
 		startTime = java.time.LocalTime.now();
 		date = java.time.LocalDate.now();
 		
-		System.out.println("Activity started at time: " + startTime.toString());
+		System.out.println("Activity started at time: " + startTime.toString() + " on " + date.toString());
 	}
 	
 	
-	public void endActivity(MouseEvent e) {
+	public void endActivity(ActionEvent e) {
+		if(startTime != null) {
+			
 		endTime = java.time.LocalTime.now();
 		elapsedSeconds = endTime.getSecond() - startTime.getSecond();
 		elapsedMinutes = endTime.getMinute() - startTime.getMinute();
 		elapsedHours = endTime.getHour() - startTime.getHour();
 		
-		System.out.println(elapsed.toString());
+		System.out.println(elapsedHours + ":" + elapsedMinutes + ":" + elapsedSeconds);
+		
 		System.out.println(date.toString());
+		}
 	}
 	
 	
