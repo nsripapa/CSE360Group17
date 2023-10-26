@@ -3,33 +3,48 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ControllerEffortConsole">
    <children>
-      <Button layoutX="79.0" layoutY="174.0" mnemonicParsing="false" onAction="#startActivity" onMouseClicked="#startActivity" prefWidth="387.0" text="Start an Activity" />
+      <Button layoutX="79.0" layoutY="231.0" mnemonicParsing="false" onAction="#startActivity" onMouseClicked="#startActivity" prefWidth="387.0" text="Start an Activity" />
       <fx:include fx:id="menuBar" source="MenuBar.fxml" />
-      <ChoiceBox layoutX="231.0" layoutY="220.0" prefHeight="26.0" prefWidth="340.0" />
-      <ChoiceBox layoutX="782.0" layoutY="219.0" prefHeight="26.0" prefWidth="340.0" />
-      <ChoiceBox layoutX="231.0" layoutY="293.0" prefHeight="26.0" prefWidth="340.0" />
-      <TextField layoutX="81.0" layoutY="220.0" prefHeight="26.0" prefWidth="150.0" text="Project Name:" />
-      <TextField layoutX="632.0" layoutY="220.0" text="Life Cycle Step:" />
-      <TextField layoutX="81.0" layoutY="293.0" prefHeight="26.0" prefWidth="150.0" text="Effort Category:" />
-      <TextField layoutX="633.0" layoutY="294.0" text="Plan:" />
-      <ChoiceBox layoutX="782.0" layoutY="294.0" prefHeight="26.0" prefWidth="340.0" />
-      <Button layoutX="734.0" layoutY="173.0" mnemonicParsing="false" onAction="#endActivity" prefHeight="26.0" prefWidth="387.0" text="Stop this Activity" />
-      <Text layoutX="419.0" layoutY="134.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1. When you start a new Activity, press the &quot;Start an Activity&quot; button." />
+      <ChoiceBox layoutX="78.0" layoutY="373.0" prefHeight="26.0" prefWidth="426.0" />
+      <ChoiceBox layoutX="665.0" layoutY="373.0" prefHeight="26.0" prefWidth="454.0" />
+      <ChoiceBox layoutX="79.0" layoutY="453.0" prefHeight="26.0" prefWidth="426.0" />
+      <ChoiceBox layoutX="578.0" layoutY="453.0" prefHeight="26.0" prefWidth="542.0" />
+      <Button layoutX="734.0" layoutY="230.0" mnemonicParsing="false" onAction="#endActivity" prefHeight="26.0" prefWidth="387.0" text="Stop this Activity" />
+      <Text layoutX="338.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" text="When you start a new Activity, press the &quot;Start an Activity&quot; button.">
+         <font>
+            <Font size="18.0" />
+         </font></Text>
       <Text layoutX="294.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="E f f o r t l og g e r   C o n s o l e" textAlignment="CENTER" wrappingWidth="610.9366455078125">
          <font>
             <Font size="36.0" />
          </font>
       </Text>
-      <Label fx:id="timerLabel" alignment="CENTER" layoutX="79.0" layoutY="357.0" text="Activity not started!" textAlignment="JUSTIFY">
+      <Label fx:id="timerLabel" alignment="CENTER" layoutX="78.0" layoutY="591.0" text="Activity not started!" textAlignment="JUSTIFY">
          <font>
             <Font size="48.0" />
          </font></Label>
+      <Text layoutX="893.0" layoutY="782.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Effortlogger V2 Prototype (WORK IN PROGRESS BUILD)" />
+      <Text layoutX="78.0" layoutY="366.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Project">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="664.0" layoutY="365.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Life Cycle Step">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="79.0" layoutY="448.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Effort Category">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="723.0" layoutY="454.0" strokeType="OUTSIDE" strokeWidth="0.0" />
    </children>
 </AnchorPane>
