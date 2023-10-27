@@ -2,6 +2,7 @@ package application;
 
 import java.io.IOException;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -25,6 +26,8 @@ public class ControllerMenuBar extends Controller
 	private Button buttonDefinitions;
 	@FXML
 	private Button buttonLogManager;
+	@FXML
+	private Button buttonPlanningPoker;
 	
 	private Stage stage;
 	private Scene scene;
@@ -102,6 +105,36 @@ public class ControllerMenuBar extends Controller
 
 	}
 
+	//switch to PlanningPoker scene
+	public void goToPlanningPoker(MouseEvent e) throws IOException
+		{
+				
+			root = FXMLLoader.load(getClass().getResource("PlanningPoker.fxml"));
+			stage = (Stage)((Node)e.getSource()).getScene().getWindow();
+			scene = new Scene(root);
+			stage.setScene(scene);
+			stage.show();
+
+		}
+	
+	public void logout() throws IOException
+	{
+		root = FXMLLoader.load(getClass().getResource("Login.fxml"));
+		stage = (Stage)buttonEffortConsole.getScene().getWindow();
+		scene = new Scene(root);
+		stage.setScene(scene);
+		stage.show();
+	}
+	
+	public void support() throws IOException
+	{
+		root = FXMLLoader.load(getClass().getResource("Support.fxml"));
+		stage = new Stage();
+		scene = new Scene(root);
+		stage.setScene(scene);
+		stage.show();
+	}
+	
 	//keep the tab for the active scene "darkened"
 	public void manageButtons(String scene)
 	{
@@ -111,6 +144,7 @@ public class ControllerMenuBar extends Controller
 		buttonLogs.getStyleClass().removeAll("selected-button");
 		buttonDefinitions.getStyleClass().removeAll("selected-button");
 		buttonLogManager.getStyleClass().removeAll("selected-button");
+		buttonPlanningPoker.getStyleClass().removeAll("selected-button");
 		
 		switch(scene)
 		{
@@ -131,6 +165,9 @@ public class ControllerMenuBar extends Controller
 				break;
 			case ("LogManager"):
 				buttonLogManager.getStyleClass().add("selected-button");
+				break;
+			case ("PlanningPoker"):
+				buttonPlanningPoker.getStyleClass().add("selected-button");
 				break;
 		}
 		

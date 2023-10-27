@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ControllerEffortLogEditor">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ControllerEffortLogEditor">
    <children>
       <fx:include fx:id="menuBar" source="MenuBar.fxml" />
       <Text layoutX="201.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select the project in order to edit its effort log">
@@ -52,7 +52,7 @@
       <ChoiceBox layoutX="201.0" layoutY="506.0" prefWidth="150.0" />
       <ChoiceBox layoutX="371.0" layoutY="506.0" prefHeight="26.0" prefWidth="590.0" />
       <Text layoutX="893.0" layoutY="782.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Effortlogger V2 Prototype (WORK IN PROGRESS BUILD)" />
-      <Text layoutX="294.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="E f f o r t l o g g e r   L o g   E d i t o r" textAlignment="CENTER">
+      <Text layoutX="296.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="E f f o r t l o g g e r   L o g   E d i t o r" textAlignment="CENTER">
          <font>
             <Font size="36.0" />
          </font>
