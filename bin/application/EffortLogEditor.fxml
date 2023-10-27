@@ -11,53 +11,53 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ControllerEffortLogEditor">
    <children>
       <fx:include fx:id="menuBar" source="MenuBar.fxml" />
-      <Text layoutX="78.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select the project in order to edit its effort log">
+      <Text layoutX="201.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select the project in order to edit its effort log">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <ChoiceBox layoutX="78.0" layoutY="195.0" prefHeight="26.0" prefWidth="365.0" />
-      <ChoiceBox layoutX="78.0" layoutY="274.0" prefHeight="26.0" prefWidth="760.0" />
-      <Button layoutX="718.0" layoutY="195.0" mnemonicParsing="false" text="Clear this effort log" />
-      <Text layoutX="78.0" layoutY="268.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select the effort log entry to be modified and make it the current effort log entry">
+      <ChoiceBox layoutX="201.0" layoutY="189.0" prefHeight="26.0" prefWidth="365.0" />
+      <ChoiceBox layoutX="201.0" layoutY="268.0" prefHeight="26.0" prefWidth="760.0" />
+      <Button layoutX="841.0" layoutY="189.0" mnemonicParsing="false" text="Clear this effort log" />
+      <Text layoutX="201.0" layoutY="262.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select the effort log entry to be modified and make it the current effort log entry">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Text layoutX="78.0" layoutY="353.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Modify the current effort log entry's attributes and press &quot;update this entry&quot; when finished">
+      <Text layoutX="201.0" layoutY="347.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Modify the current effort log entry's attributes and press &quot;update this entry&quot; when finished">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Text layoutX="78.0" layoutY="436.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Life Cycle Step">
+      <Text layoutX="201.0" layoutY="430.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Life Cycle Step">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Text layoutX="78.0" layoutY="507.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Effort Category">
+      <Text layoutX="201.0" layoutY="501.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Effort Category">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Button layoutX="730.0" layoutY="595.0" mnemonicParsing="false" text="Update this entry" />
-      <Button layoutX="78.0" layoutY="671.0" mnemonicParsing="false" text="Delete this entry" />
-      <Button layoutX="664.0" layoutY="671.0" mnemonicParsing="false" text="Split this entry into two entries" />
-      <ChoiceBox layoutX="78.0" layoutY="441.0" prefWidth="150.0" />
-      <TextField layoutX="79.0" layoutY="358.0" promptText="Date" />
-      <TextField layoutX="309.0" layoutY="358.0" promptText="Start Time" />
-      <TextField layoutX="549.0" layoutY="358.0" promptText="End Time" />
-      <Text layoutX="359.0" layoutY="396.0" strokeType="OUTSIDE" strokeWidth="0.0" text="hh:mm:ss" />
-      <Text layoutX="599.0" layoutY="396.0" strokeType="OUTSIDE" strokeWidth="0.0" text="hh:mm:ss" />
-      <Text layoutX="120.0" layoutY="396.0" strokeType="OUTSIDE" strokeWidth="0.0" text="yyyy-mm-dd" />
-      <ChoiceBox layoutX="78.0" layoutY="512.0" prefWidth="150.0" />
-      <ChoiceBox layoutX="248.0" layoutY="512.0" prefHeight="26.0" prefWidth="590.0" />
+      <Button layoutX="853.0" layoutY="589.0" mnemonicParsing="false" text="Update this entry" />
+      <Button layoutX="201.0" layoutY="665.0" mnemonicParsing="false" text="Delete this entry" />
+      <Button layoutX="787.0" layoutY="665.0" mnemonicParsing="false" text="Split this entry into two entries" />
+      <ChoiceBox layoutX="201.0" layoutY="435.0" prefWidth="150.0" />
+      <TextField layoutX="202.0" layoutY="352.0" promptText="Date" />
+      <TextField layoutX="432.0" layoutY="352.0" promptText="Start Time" />
+      <TextField layoutX="672.0" layoutY="352.0" promptText="End Time" />
+      <Text layoutX="482.0" layoutY="390.0" strokeType="OUTSIDE" strokeWidth="0.0" text="hh:mm:ss" />
+      <Text layoutX="722.0" layoutY="390.0" strokeType="OUTSIDE" strokeWidth="0.0" text="hh:mm:ss" />
+      <Text layoutX="243.0" layoutY="390.0" strokeType="OUTSIDE" strokeWidth="0.0" text="yyyy-mm-dd" />
+      <ChoiceBox layoutX="201.0" layoutY="506.0" prefWidth="150.0" />
+      <ChoiceBox layoutX="371.0" layoutY="506.0" prefHeight="26.0" prefWidth="590.0" />
       <Text layoutX="893.0" layoutY="782.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Effortlogger V2 Prototype (WORK IN PROGRESS BUILD)" />
       <Text layoutX="294.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="E f f o r t l o g g e r   L o g   E d i t o r" textAlignment="CENTER">
          <font>
             <Font size="36.0" />
          </font>
       </Text>
-      <Label layoutX="78.0" layoutY="594.0" text="No attributes have been saved yet!">
+      <Label layoutX="201.0" layoutY="588.0" text="No attributes have been saved yet!">
          <font>
             <Font size="18.0" />
          </font>

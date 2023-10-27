@@ -4,8 +4,19 @@
 	-fx-background-radius : 0 0 0 0;
 	-fx-background-insets: 0 0 -1 0, 0, 1, 2;
 }
+
 .selected-button
 {
 	-fx-background-color : #3B892C;
 	-fx-background-radius : 0 0 0 0;
+}
+
+.loginButton
+{
+	-fx-background-color : #42AA2D;
+}
+
+.loginButton:hover
+{
+	-fx-background-color : #3B892C;
 }
