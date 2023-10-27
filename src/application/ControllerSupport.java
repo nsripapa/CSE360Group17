@@ -1,3 +1,7 @@
+//AUTHOR UNLESS SPECIFIED: Ream Russom Teame
+//This Prototype will send an email to an internal support email address with a user specified problem.
+//We have added a sleek menu bar to the top of the UI, and in that menubar is a control to navigate to this prototype
+
 package application;
 
 import javafx.fxml.FXML;
@@ -22,9 +26,10 @@ public class ControllerSupport {
 	private Label labelMessage;
 	
 	
-	
+	//clicked send button
 	public void send(MouseEvent e)
 	{
+		//make sure both fields are filled out
 		if (textFieldEmail.getText().isEmpty() || textAreaIssue.getText().isEmpty())
 		{
 			labelMessage.setText("Error sending request. Please fill out all required fields.");
@@ -40,6 +45,7 @@ public class ControllerSupport {
 			props.put("mail.smtp.starttls.enable", "true");
 			
 			
+			//in real world, we will use a dedicated email for sending support tickets.
 			Authenticator auth = new Authenticator() {
 			    protected PasswordAuthentication getPasswordAuthentication() {
 			        return new PasswordAuthentication("jacob.fett03@gmail.com", "jjuv ltxi tjdk lizq");
@@ -49,6 +55,7 @@ public class ControllerSupport {
 			
 			Session session = Session.getDefaultInstance(props, auth);
 			
+			//in real world, we will use a general support email that a support team can access
 			String to = "jfett2@asu.edu";
 			String from = "jacob.fett03@gmail.com";
 			String subject = "EffortLogger Support Ticket";

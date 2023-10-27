@@ -128,6 +128,7 @@ public class ControllerMenuBar extends Controller
 	
 	public void support() throws IOException
 	{
+		//AUTHOR: Ream Russom Teame
 		root = FXMLLoader.load(getClass().getResource("Support.fxml"));
 		stage = new Stage();
 		scene = new Scene(root);
