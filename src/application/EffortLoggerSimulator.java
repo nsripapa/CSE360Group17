@@ -2,7 +2,7 @@ package application;
 
 public class EffortLoggerSimulator {
 
-    private EffortLogger effortLogger = new EffortLogger();
+    private UNandPW usersAndPasswords = new UNandPW();
 
     public String runTestCases() {
         StringBuilder results = new StringBuilder();
@@ -16,8 +16,9 @@ public class EffortLoggerSimulator {
         return results.toString();
     }
 
-  private String testUserLogin() {
+  
+    private String testUserLogin() {
         boolean success = effortLogger.login("testUser", "testPassword");
         return success ? "User Login Test: Success\n" : "User Login Test: Failed\n";
     }
-//More to be added
+//More to be added 
