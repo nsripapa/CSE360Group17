@@ -58,11 +58,16 @@ public class ControllerEffortConsole extends Controller implements Initializable
 	public void setUser(String user) {
 		username = user;
 	}
+	
+	public void setUserLabelText(String user)
+	{
+		userLabel.setText("Logged in as: " + username);
+	}
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
 
-		userLabel.setText("Logged in as: " + username);
+		//userLabel.setText("Logged in as: " + username);
 		menuBarController.manageButtons("EffortConsole");
 	}
 }

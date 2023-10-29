@@ -63,12 +63,15 @@ public class ControllerLogin
 			{
 				FXMLLoader loader = new FXMLLoader(getClass().getResource("EffortConsole.fxml"));
 				root = loader.load();
+				ControllerEffortConsole ec = loader.getController();
+				ec.setUser(user);
+				ec.setUserLabelText(user);
+				
 				stage = (Stage)((Node)e.getSource()).getScene().getWindow();
 				scene = new Scene(root);
 				stage.setScene(scene);
 				stage.show();
-				ControllerEffortConsole ec = loader.getController();
-				ec.setUser(user);
+
 				
 				
 				
