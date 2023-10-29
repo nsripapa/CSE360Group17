@@ -17,6 +17,7 @@ import java.io.IOException;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -27,7 +28,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-public class ControllerLogin {
+public class ControllerLogin 
+{
 
 	
 	@FXML
@@ -59,11 +61,17 @@ public class ControllerLogin {
 			//if correct password
 			if(usersAndPasswords.loginInfo.get(user).equals(password))
 			{
-				root = FXMLLoader.load(getClass().getResource("EffortConsole.fxml"));
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("EffortConsole.fxml"));
+				root = loader.load();
 				stage = (Stage)((Node)e.getSource()).getScene().getWindow();
 				scene = new Scene(root);
 				stage.setScene(scene);
 				stage.show();
+				ControllerEffortConsole ec = loader.getController();
+				ec.setUser(user);
+				
+				
+				
 			} else
 			{
 				//username matches, not password

@@ -25,6 +25,15 @@ public class Controller implements Initializable
 	private Scene scene;
 	private Parent root;
 	
+	public String username;
+	
+	public void setUser(String user) {
+		username = user;
+	}
+	public String getUser() {
+		return username;
+	}
+	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
