@@ -133,6 +133,18 @@ public class ControllerMenuBar extends Controller
 		stage = new Stage();
 		scene = new Scene(root);
 		stage.setScene(scene);
+		stage.setTitle("Support");
+		stage.show();
+	}
+	
+	public void feedback() throws IOException
+	{
+		// author: Augustine Suter
+		root = FXMLLoader.load(getClass().getResource("Feedback.fxml"));
+		stage = new Stage();
+		scene = new Scene(root);
+		stage.setScene(scene);
+		stage.setTitle("Feedback");
 		stage.show();
 	}
 	
