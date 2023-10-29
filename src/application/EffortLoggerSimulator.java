@@ -4,7 +4,7 @@ package application;
 //For the sake of reference and simplicity, I have decided to test the UserName and Password function of the program 
 public class EffortLoggerSimulator {
 
-    private UNandPW usersAndPasswords = new UNandPW();
+    private UNandPW usersAndPasswords = new UNandPW(); //Refer to the UNandPW file for more context
 //In application, we will add more test cases.
     public String runTestCases() {
         StringBuilder results = new StringBuilder();
