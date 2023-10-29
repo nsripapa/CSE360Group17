@@ -1,5 +1,9 @@
-package application;
+//Author: Ribhay Singh
+//This file essentially controls the
 
+
+
+package application;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -9,8 +13,9 @@ import javafx.stage.Stage;
 
 public class TestCaseSimulator extends Application {
 
+   
     private TextArea textArea = new TextArea();
-    private EffortLoggerSimulator simulator = new EffortLoggerSimulator();
+    private EffortLoggerSimulator simulator = new EffortLoggerSimulator(); 
 
     public static void main(String[] args) {
          launch(args);
