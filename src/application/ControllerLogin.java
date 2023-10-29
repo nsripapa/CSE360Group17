@@ -1,3 +1,16 @@
+//AUTHOR: JACOB FETT
+//This is the controller for the login screen of EffortLogger V2. When you launch the program, you will be brought to the login screen.
+//Once logged in, you will be brought to the main program.
+
+//Design Alignment:
+//The implementation aligns with the design by offering a user-friendly login experience.
+//It verifies user credentials, demonstrating the design goal of user authentication.
+
+//Results and Goal Satisfaction:
+//Successful login demonstrates that the design goal of authenticating users is satisfied.
+//Invalid login provides feedback for incorrect credentials, satisfying the design goal of handling incorrect input.
+
+
 package application;
 
 import java.io.IOException;
@@ -35,11 +48,15 @@ public class ControllerLogin {
 	//on login button click
 	public void login(MouseEvent e) throws IOException
 	{
+		
+		//get user and password from text fields
 		String user = textFieldUN.getText();
 		String password = String.valueOf(passwordField.getText());
 		
+		//if user exists
 		if(usersAndPasswords.loginInfo.containsKey(user))
 		{
+			//if correct password
 			if(usersAndPasswords.loginInfo.get(user).equals(password))
 			{
 				root = FXMLLoader.load(getClass().getResource("EffortConsole.fxml"));

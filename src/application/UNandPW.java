@@ -15,6 +15,7 @@ public class UNandPW {
 		loginInfo.put("jfett2", "xle952!");
 		loginInfo.put("nsripapa3", "w!rtG%l");
 		loginInfo.put("rsingh7", "pft4u7$z");
+		
 	}
 	
 	protected HashMap getLoginInfo()
