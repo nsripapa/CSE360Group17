@@ -16,7 +16,7 @@ public class EffortLoggerSimulator {
     }
 
     private String testUNandPWInitialization() {
-        // Check if the HashMap contains the hardcoded keys
+        
         boolean containsKeyA = usersAndPasswords.getLoginInfo().containsKey("a");
         boolean containsKeyJfett2 = usersAndPasswords.getLoginInfo().containsKey("jfett2");
         boolean containsKeyNsripapa3 = usersAndPasswords.getLoginInfo().containsKey("nsripapa3");
@@ -28,7 +28,7 @@ public class EffortLoggerSimulator {
     }
 
     private String testGetLoginInfo() {
-        // Simply check if getLoginInfo() returns a non-empty HashMap
+       
         boolean hasInfo = !usersAndPasswords.getLoginInfo().isEmpty();
 
         return hasInfo 
