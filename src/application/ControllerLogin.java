@@ -67,6 +67,7 @@ public class ControllerLogin
 				ec.setUser(user);
 				ec.setUserLabelText(user);
 				
+				
 				stage = (Stage)((Node)e.getSource()).getScene().getWindow();
 				scene = new Scene(root);
 				stage.setScene(scene);

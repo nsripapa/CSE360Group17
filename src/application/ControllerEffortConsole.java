@@ -24,15 +24,13 @@ public class ControllerEffortConsole extends Controller implements Initializable
 	private ControllerMenuBar menuBarController;
 	
 	@FXML
-	private ControllerMenuBarUserAccess menuBarControllerUser;
-	
-	@FXML
 	private Label timerLabel;
 	
 	@FXML
 	private Label userLabel;
 	
 	String username;
+	PrivilegeLevels pl = new PrivilegeLevels();
 	DateTimeFormatter form = DateTimeFormatter.ofPattern("HH:mm:ss"); // Time format
 	
 	// starts logging time
@@ -55,19 +53,28 @@ public class ControllerEffortConsole extends Controller implements Initializable
 		}
 	}
 	
+	// grab username from login screen
 	public void setUser(String user) {
 		username = user;
 	}
 	
+	// set label at bottom left
 	public void setUserLabelText(String user)
 	{
-		userLabel.setText("Logged in as: " + username);
+		String perms = "";
+		if(pl.accesslevel.get(user).equals("admin")) {
+			perms = " as an Administrator";
+		}
+		else {
+			perms = " as a User";
+		}
+		userLabel.setText("Logged in: " + username + perms);
 	}
+	
+	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		// TODO Auto-generated method stub
-
-		//userLabel.setText("Logged in as: " + username);
+		
 		menuBarController.manageButtons("EffortConsole");
 	}
 }

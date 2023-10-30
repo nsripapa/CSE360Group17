@@ -10,8 +10,10 @@ public class PrivilegeLevels {
 	PrivilegeLevels() {
 		
 		accesslevel.put("a", "admin");
-		accesslevel.put("b", "user");
-		
+		accesslevel.put("Bob", "user");
+		accesslevel.put("nsripapa3", "admin");
+		accesslevel.put("rsingh7", "admin");
+		accesslevel.put("apsuter", "admin");
 	}
 	
 	protected HashMap getAccessLevel() {

@@ -33,6 +33,8 @@ public class ControllerMenuBar extends Controller
 	private Scene scene;
 	private Parent root;
 	
+	
+	
 	//switch to EffortConsole scene
 	public void goToEffortConsole(MouseEvent e) throws IOException
 	{
@@ -48,13 +50,11 @@ public class ControllerMenuBar extends Controller
 	//switch to EffortLogEditor scene
 	public void goToEffortLogEditor(MouseEvent e) throws IOException
 	{
-		
 		root = FXMLLoader.load(getClass().getResource("EffortLogEditor.fxml"));
 		stage = (Stage)((Node)e.getSource()).getScene().getWindow();
 		scene = new Scene(root);
 		stage.setScene(scene);
 		stage.show();
-		
 	}
 	
 	//switch to DefectConsole scene
