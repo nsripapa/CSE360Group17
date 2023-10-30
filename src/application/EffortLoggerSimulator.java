@@ -1,38 +1,46 @@
 //Author: Ribhay Singh
 //This is the basic layout of how the test cases will be carried out. 
 //For the sake of reference and simplicity, I have decided to test the UserName and Password function of the program 
-package application;
-public class EffortLoggerSimulator {
 
-    private UNandPW usersAndPasswords = new UNandPW();
-//In application, we will add more test cases. 
+package application;
+
+public class EffortLoggerSimulator {
+    
+    private ControllerLogin loginController = new ControllerLogin(); //Check controller login for further info 
+    
     public String runTestCases() {
         StringBuilder results = new StringBuilder();
 
-        results.append(testUNandPWInitialization());
-        results.append(testGetLoginInfo());
-
+        // At first, we will test valid login attempts 
+        results.append(testLogin("a", "a", "Valid Login Test 1: "));
+        results.append(testLogin("jfett2", "xle952!", "Valid Login Test 2:  "));
+        
+        // Then, we will carry out the test with an invalid username
+        results.append(testLogin("fakeUser", "somepass", "Invalid Username Test: "));
+        
+        // Finally, we will test with a wrongpassword 
+        results.append(testLogin("a", "wrongpass", "Invalid Password Test: "));
+        
         return results.toString();
     }
-
-    private String testUNandPWInitialization() {
-        // The Username and Password details are contained in a hash map. Thus, we check if hash map contains the keys.
-        boolean containsKeyA = usersAndPasswords.getLoginInfo().containsKey("a");
-        boolean containsKeyJfett2 = usersAndPasswords.getLoginInfo().containsKey("jfett2");
-        boolean containsKeyNsripapa3 = usersAndPasswords.getLoginInfo().containsKey("nsripapa3");
-        boolean containsKeyRsingh7 = usersAndPasswords.getLoginInfo().containsKey("rsingh7");
+    
+    private String testLogin(String username, String password, String testName) {
+        loginController.textFieldUN.setText(username);
+        loginController.passwordField.setText(password);
         
-        return (containsKeyA && containsKeyJfett2 && containsKeyNsripapa3 && containsKeyRsingh7) 
-            ? "UNandPW Initialization Test: Success\n" 
-            : "UNandPW Initialization Test: Failed\n";
-    }
-
-    private String testGetLoginInfo() {
+        String messageBefore = loginController.labelMessage.getText();
+        try {
+            loginController.login(null); 
+        } catch(Exception e) {
+            return testName + "Exception encountered: " + e.getMessage() + "\n";
+        }
         
-        boolean hasInfo = !usersAndPasswords.getLoginInfo().isEmpty();
-
-        return hasInfo 
-            ? "Get Login Info Test: Success\n" 
-            : "Get Login Info Test: Failed\n";
+        String messageAfter = loginController.labelMessage.getText();
+        
+    if (messageBefore.equals(messageAfter)) {
+            return testName + "Failed\n";
+        } else {
+            return testName + "Success\n";
+        }
     }
 }
