@@ -11,15 +11,15 @@
       <fx:include fx:id="menuBar" source="MenuBar.fxml" />
       <ChoiceBox fx:id="choiceBoxSection" layoutX="450.0" layoutY="152.0" prefHeight="25.0" prefWidth="300.0" />
       <ChoiceBox fx:id="choiceBoxList" layoutX="450.0" layoutY="222.0" prefHeight="25.0" prefWidth="300.0" />
-      <Button fx:id="buttonAddList" layoutX="450.0" layoutY="268.0" mnemonicParsing="false" text="Add" />
-      <Button fx:id="buttonDeleteList" layoutX="569.0" layoutY="268.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="56.0" text="Delete" />
+      <Button fx:id="buttonAddList" layoutX="450.0" layoutY="268.0" mnemonicParsing="false" onMouseClicked="#addListItem" text="Add" />
+      <Button fx:id="buttonDeleteList" layoutX="569.0" layoutY="268.0" mnemonicParsing="false" onMouseClicked="#deleteListItem" prefHeight="25.0" prefWidth="56.0" text="Delete" />
       <Button fx:id="buttonEditList" layoutX="695.0" layoutY="268.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="56.0" text="Edit" />
-      <TextField fx:id="textField" layoutX="526.0" layoutY="388.0" />
-      <Label fx:id="labelChocieBox1" layoutX="297.0" layoutY="483.0" prefHeight="17.0" prefWidth="164.0" text="Label" />
-      <Label fx:id="labelName" layoutX="305.0" layoutY="396.0" prefHeight="17.0" prefWidth="164.0" text="Label" />
+      <TextField fx:id="textField" layoutX="452.0" layoutY="388.0" prefHeight="25.0" prefWidth="300.0" />
+      <Label fx:id="labelChoiceBox1" alignment="CENTER_RIGHT" layoutX="36.0" layoutY="483.0" prefHeight="17.0" prefWidth="393.0" text="Label" />
+      <Label fx:id="labelName" alignment="CENTER_RIGHT" layoutX="36.0" layoutY="392.0" prefHeight="17.0" prefWidth="393.0" text="Name to edit/add:" />
       <Button fx:id="buttonAddChoiceBox1" layoutX="526.0" layoutY="538.0" mnemonicParsing="false" text="Add" />
       <Button fx:id="buttonDeleteChoiceBox1" layoutX="625.0" layoutY="538.0" mnemonicParsing="false" text="Delete" />
-      <Label fx:id="labelChoiceBox2" layoutX="297.0" layoutY="614.0" prefHeight="17.0" prefWidth="164.0" text="Label" />
+      <Label fx:id="labelChoiceBox2" alignment="CENTER_RIGHT" layoutX="36.0" layoutY="614.0" prefHeight="17.0" prefWidth="393.0" text="Label" />
       <Button fx:id="buttonAddChoiceBox2" layoutX="526.0" layoutY="669.0" mnemonicParsing="false" text="Add" />
       <Button fx:id="buttonDeleteChoiceBox2" layoutX="625.0" layoutY="669.0" mnemonicParsing="false" text="Delete" />
       <ChoiceBox fx:id="chioceBox1" layoutX="526.0" layoutY="479.0" prefWidth="150.0" />
