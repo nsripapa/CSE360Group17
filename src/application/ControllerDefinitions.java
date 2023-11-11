@@ -20,7 +20,7 @@ public class ControllerDefinitions extends Controller implements Initializable
 	@FXML
 	private ControllerMenuBar menuBarController;
 	@FXML
-	private ChoiceBox<String> choiceBoxSection, choiceBoxList, chioceBox1, choiceBox2;
+	private ChoiceBox<String> choiceBoxSection, choiceBoxList, choiceBox1, choiceBox2;
 	@FXML
 	private Button buttonAddList, buttonDeleteList, buttonEditList,
 	buttonAddChoiceBox1, buttonDeleteChoiceBox1, buttonAddChoiceBox2, buttonDeleteChoiceBox2;
@@ -32,7 +32,7 @@ public class ControllerDefinitions extends Controller implements Initializable
 	private String[] sections = {"Projects", "Life Cycle Steps", "Effort Categories", 
 			"Plans", "Deliverables", "Interruptions", "Defect Categories"};
 	
-	private Definitions definitions = new Definitions();
+	private Definitions definitions = Definitions.getInstance();
 	
 	private void setChoiceBoxList(String section)
 	{
@@ -49,6 +49,7 @@ public class ControllerDefinitions extends Controller implements Initializable
 				labelChoiceBox1.setText("Life Cycle Steps for Project");
 				labelChoiceBox1.setVisible(true);
 				labelChoiceBox2.setVisible(false);
+				
 			}
 			break;
 		case ("Effort Categories"):
@@ -106,6 +107,75 @@ public class ControllerDefinitions extends Controller implements Initializable
 		
 	}
 	
+	public void setProjectLifeCycleSteps()
+	{
+		
+		if (choiceBoxSection.getValue() != "Projects") return;
+		
+		String selectedProject = choiceBoxList.getValue();
+		if (selectedProject == null) return;
+		
+		for (Project project : definitions.projects)
+		{
+			if (project.name == selectedProject)
+			{
+				choiceBox1.setItems(FXCollections.observableArrayList(definitions.getProjectLifeCycleStepNames(project)));
+				break;
+			}
+		}
+	}
+	
+	
+	//When an Effort Category is selected, fill the first choice box with the list of Effort Categories
+	//and select the default Effort Category
+	public void setDefaultEffortCategories()
+	{
+		if (choiceBoxSection.getValue() != "Life Cycle Steps") return;
+		
+		String selectedLCS = choiceBoxList.getValue();
+		if (selectedLCS == null) return;
+		
+		LifeCycleStep lifeCycleStep = new LifeCycleStep();
+		
+		for (LifeCycleStep lcs : definitions.lifeCycleSteps)
+		{
+			if (lcs.name == selectedLCS)
+			{
+				lifeCycleStep = lcs;
+				break;
+			}
+		}
+		
+		
+		choiceBox1.setItems(FXCollections.observableArrayList(definitions.getEffortCategoryNames()));
+		choiceBox1.getSelectionModel().select(lifeCycleStep.defaultEffortCategory.name);
+	}
+	
+	//When an Effort Category is selected, fill the second choice box with the list of Deliverables
+	//and select the default Deliverable
+	public void setDefaultDeliverables()
+	{
+		if (choiceBoxSection.getValue() != "Life Cycle Steps") return;
+		
+		String selectedLCS = choiceBoxList.getValue();
+		if (selectedLCS == null) return;
+		
+		LifeCycleStep lifeCycleStep = new LifeCycleStep();
+		
+		for (LifeCycleStep lcs : definitions.lifeCycleSteps)
+		{
+			if (lcs.name == selectedLCS)
+			{
+				lifeCycleStep = lcs;
+				break;
+			}
+		}
+		
+		choiceBox2.setItems(FXCollections.observableArrayList(definitions.getDeliverableNames()));
+		choiceBox2.getSelectionModel().select(lifeCycleStep.defaultDeliverable.name);
+	}
+	
+
 	public void addListItem(MouseEvent e)
 	{
 		
@@ -291,8 +361,25 @@ public class ControllerDefinitions extends Controller implements Initializable
 		choiceBoxSection.getItems().addAll(sections);
 		
 		choiceBoxSection.setOnAction(e -> {
+
 			String section = choiceBoxSection.getValue();
 			setChoiceBoxList(section);
+		});
+		
+		choiceBoxList.setOnAction(e -> {
+			
+			if (choiceBoxSection.getValue() == "Projects")
+			{
+				setProjectLifeCycleSteps();
+			} else if (choiceBoxSection.getValue() == "Life Cycle Steps")
+			{
+				setDefaultEffortCategories();
+				setDefaultDeliverables();
+			} else
+			{
+				choiceBox1.getSelectionModel().clearSelection();
+				choiceBox2.getSelectionModel().clearSelection();
+			}
 		});
 	}
 }

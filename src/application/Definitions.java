@@ -6,7 +6,9 @@ import java.util.List;
 
 public class Definitions 
 {
-	Definitions()
+	private static final Definitions instance = new Definitions();
+	
+	private Definitions()
 	{
 		projects = new ArrayList<>();
 		lifeCycleSteps = new ArrayList<>();
@@ -443,6 +445,23 @@ public class Definitions
 	        return names;
 	    }
 
+	 public List<String> getProjectLifeCycleStepNames(Project project) 
+		{
+		       List<String> names = new ArrayList<>();
+		       for (LifeCycleStep step : project.lifeCycleSteps) 
+		       {
+		           names.add(step.name);
+		       }
+		       return names;
+		}
+	 
+	 
+	 
+	 public static Definitions getInstance()
+	 {
+		 return instance;
+	 }
+	 
 }
 
 class Project
@@ -469,6 +488,7 @@ class Project
 		
 		return null;
 	}
+	
 }
 
 class LifeCycleStep
