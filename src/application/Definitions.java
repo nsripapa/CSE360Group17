@@ -1,15 +1,63 @@
 package application;
 
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Definitions 
+public class Definitions implements Serializable
 {
+	private static final long serialVersionUID = 32485972343495807L;
 	private static final Definitions instance = new Definitions();
+	Definitions loadedDefinitions;
+	
+	public void load() throws IOException, ClassNotFoundException
+	{
+		FileInputStream fis = new FileInputStream("definitions.dat");
+		BufferedInputStream bis = new BufferedInputStream(fis);
+		ObjectInputStream ois = new ObjectInputStream(bis);
+		
+		loadedDefinitions = (Definitions)ois.readObject();
+		
+		projects = loadedDefinitions.projects;
+		lifeCycleSteps = loadedDefinitions.lifeCycleSteps;
+		effortCategories = loadedDefinitions.effortCategories;
+		plans = loadedDefinitions.plans;
+		deliverables = loadedDefinitions.deliverables;
+		interruptions = loadedDefinitions.interruptions;
+		defectCategories = loadedDefinitions.defectCategories;
+	}
+
+	private Definitions(Boolean load)
+	{
+		projects = loadedDefinitions.projects;
+		lifeCycleSteps = loadedDefinitions.lifeCycleSteps;
+		effortCategories = loadedDefinitions.effortCategories;
+		plans = loadedDefinitions.plans;
+		deliverables = loadedDefinitions.deliverables;
+		interruptions = loadedDefinitions.interruptions;
+		defectCategories = loadedDefinitions.defectCategories;
+	}
 	
 	private Definitions()
 	{
+		
+		try {
+			load();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		/*
 		projects = new ArrayList<>();
 		lifeCycleSteps = new ArrayList<>();
 		effortCategories = new ArrayList<>();
@@ -17,7 +65,6 @@ public class Definitions
 		deliverables = new ArrayList<>();
 		interruptions = new ArrayList<>();
 		defectCategories = new ArrayList<>();
-		
 		
 		//start of predefined values-----------------------------------------------------------------------------------------------------------------------------
 		//start of predefined values-----------------------------------------------------------------------------------------------------------------------------
@@ -373,7 +420,7 @@ public class Definitions
 		project.lifeCycleSteps.add(project.getLifeCycleStep(lifeCycleSteps, "Repository Update"));
 		
 		projects.add(project);
-		
+		*/
 		//end of predefined values-----------------------------------------------------------------------------------------------------------------------------
 		//end of predefined values-----------------------------------------------------------------------------------------------------------------------------
 		//end of predefined values-----------------------------------------------------------------------------------------------------------------------------
@@ -477,9 +524,9 @@ public class Definitions
 	 
 }
 
-class Project
+class Project implements Serializable
 {
-	
+	private static final long serialVersionUID = 3248596783495307L;
 	Project()
 	{
 		name = "";
@@ -511,9 +558,10 @@ class Project
 	
 }
 
-class LifeCycleStep
+class LifeCycleStep implements Serializable
 {
 	
+	private static final long serialVersionUID = 7456443495807L;
 	LifeCycleStep()
 	{
 		name = "";
@@ -552,9 +600,10 @@ class LifeCycleStep
 	}
 }
 
-class EffortCategory
+class EffortCategory implements Serializable
 {
 	
+	private static final long serialVersionUID = 1234854585807L;
 	EffortCategory()
 	{
 		name = "";
@@ -563,9 +612,10 @@ class EffortCategory
 	String name;
 }
 
-class Plan
+class Plan implements Serializable
 {
 	
+	private static final long serialVersionUID = 32485997681L;
 	Plan()
 	{
 		name = "";
@@ -574,9 +624,10 @@ class Plan
 	String name;
 }
 
-class Deliverable
+class Deliverable implements Serializable
 {
 	
+	private static final long serialVersionUID = 1234542343495807L;
 	Deliverable()
 	{
 		name = "";
@@ -585,9 +636,10 @@ class Deliverable
 	String name;
 }
 
-class Interruption
+class Interruption implements Serializable
 {
 	
+	private static final long serialVersionUID = 123452343495807L;
 	Interruption()
 	{
 		name = "";
@@ -596,9 +648,10 @@ class Interruption
 	String name;
 }
 
-class DefectCategory
+class DefectCategory implements Serializable
 {
 	
+	private static final long serialVersionUID = 7389495807L;
 	DefectCategory()
 	{
 		name = "";

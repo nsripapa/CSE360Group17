@@ -1,5 +1,6 @@
 package application;
 
+import java.io.Serializable;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -30,8 +31,6 @@ public class ControllerDefinitions extends Controller implements Initializable
 	
 	private String[] sections = {"Projects", "Life Cycle Steps", "Effort Categories", 
 			"Plans", "Deliverables", "Interruptions", "Defect Categories"};
-	
-	private Definitions definitions = Definitions.getInstance();
 	
 	private void setChoiceBoxList(String section)
 	{
