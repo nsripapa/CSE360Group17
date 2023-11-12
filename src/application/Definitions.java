@@ -32,16 +32,6 @@ public class Definitions implements Serializable
 		interruptions = loadedDefinitions.interruptions;
 		defectCategories = loadedDefinitions.defectCategories;
 		
-		//predefined logs for testing and show casing========================================================================
-		EffortLog el = new EffortLog("11-12-2023", "08:30:44", "08:35:44", "5", "Problem Understanding", "Deliverables", "Project Plan");
-		projects.get(0).logs.effortLogs.add(el);
-		el = new EffortLog("11-19-2023", "12:30:44", "15:35:44", "10", "Conceptual Design Plan", "Plans", "Conceptual Design Plan");
-		projects.get(0).logs.effortLogs.add(el);
-		el = new EffortLog("11-19-2023", "12:30:44", "15:35:44", "10", "Requirements", "Plans", "Implementation Plan");
-		projects.get(1).logs.effortLogs.add(el);
-		
-		DefectLog dl = new DefectLog("123", "EXAMPLE details", "Finalizing", "Information Gathering", "Function", "Open", "");
-		projects.get(0).logs.defectLogs.add(dl);
 	}
 
 	private Definitions()
