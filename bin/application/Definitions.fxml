@@ -17,11 +17,9 @@
       <TextField fx:id="textField" layoutX="452.0" layoutY="388.0" prefHeight="25.0" prefWidth="300.0" />
       <Label fx:id="labelChoiceBox1" alignment="CENTER_RIGHT" layoutX="36.0" layoutY="483.0" prefHeight="17.0" prefWidth="393.0" text="Label" />
       <Label fx:id="labelName" alignment="CENTER_RIGHT" layoutX="36.0" layoutY="392.0" prefHeight="17.0" prefWidth="393.0" text="Name to edit/add:" />
-      <Button fx:id="buttonAddChoiceBox1" layoutX="526.0" layoutY="538.0" mnemonicParsing="false" text="Add" />
-      <Button fx:id="buttonDeleteChoiceBox1" layoutX="625.0" layoutY="538.0" mnemonicParsing="false" text="Delete" />
+      <Button fx:id="buttonDeleteChoiceBox1" layoutX="572.0" layoutY="539.0" mnemonicParsing="false" text="Delete" />
       <Label fx:id="labelChoiceBox2" alignment="CENTER_RIGHT" layoutX="36.0" layoutY="614.0" prefHeight="17.0" prefWidth="393.0" text="Label" />
-      <Button fx:id="buttonAddChoiceBox2" layoutX="526.0" layoutY="669.0" mnemonicParsing="false" text="Add" />
-      <Button fx:id="buttonDeleteChoiceBox2" layoutX="625.0" layoutY="669.0" mnemonicParsing="false" text="Delete" />
+      <Button fx:id="buttonAddChoiceBox2" layoutX="578.0" layoutY="670.0" mnemonicParsing="false" text="Add" />
       <ChoiceBox fx:id="choiceBox1" layoutX="526.0" layoutY="479.0" prefWidth="150.0" />
       <ChoiceBox fx:id="choiceBox2" layoutX="526.0" layoutY="610.0" prefWidth="150.0" />
    </children>

@@ -22,8 +22,7 @@ public class ControllerDefinitions extends Controller implements Initializable
 	@FXML
 	private ChoiceBox<String> choiceBoxSection, choiceBoxList, choiceBox1, choiceBox2;
 	@FXML
-	private Button buttonAddList, buttonDeleteList, buttonEditList,
-	buttonAddChoiceBox1, buttonDeleteChoiceBox1, buttonAddChoiceBox2, buttonDeleteChoiceBox2;
+	private Button buttonAddList, buttonDeleteList, buttonEditList, buttonDeleteChoiceBox1, buttonDeleteChoiceBox2;
 	@FXML
 	private TextField textField;
 	@FXML

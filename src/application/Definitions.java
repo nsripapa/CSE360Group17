@@ -470,11 +470,13 @@ class Project
 	Project()
 	{
 		name = "";
-		lifeCycleSteps = new ArrayList<>();;
+		lifeCycleSteps = new ArrayList<>();
+		logs = new Logs();
 	}
 	
 	String name;
 	List<LifeCycleStep> lifeCycleSteps;
+	Logs logs;
 	
 	public LifeCycleStep getLifeCycleStep(List<LifeCycleStep> lifeCycleSteps, String name)
 	{

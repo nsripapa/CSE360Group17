@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -13,5 +16,11 @@
          </font>
       </Text>
       <Text layoutX="893.0" layoutY="782.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Effortlogger V2 Prototype (WORK IN PROGRESS BUILD)" />
+      <TextArea fx:id="textAreaEffort" layoutX="14.0" layoutY="259.0" prefHeight="510.0" prefWidth="571.0" />
+      <TextArea fx:id="textAreaDefect" layoutX="615.0" layoutY="258.0" prefHeight="510.0" prefWidth="571.0" />
+      <Label layoutX="286.0" layoutY="228.0" text="Effort Logs" />
+      <Label layoutX="869.0" layoutY="228.0" prefHeight="17.0" prefWidth="104.0" text="Defect Logs" />
+      <ChoiceBox fx:id="choiceBoxProject" layoutX="525.0" layoutY="178.0" prefWidth="150.0" />
+      <Label layoutX="582.0" layoutY="147.0" text="Project" />
    </children>
 </AnchorPane>
