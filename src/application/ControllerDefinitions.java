@@ -18,6 +18,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
+//Controller for the Definitions.fxml Scene
 public class ControllerDefinitions extends Controller implements Initializable
 {
 	@FXML
@@ -166,12 +167,11 @@ public class ControllerDefinitions extends Controller implements Initializable
 			}
 		}
 		
-		
 		choiceBox1.setItems(FXCollections.observableArrayList(definitions.getEffortCategoryNames()));
 		if(lifeCycleStep.defaultEffortCategory != null) choiceBox1.getSelectionModel().select(lifeCycleStep.defaultEffortCategory.name);
 	}
 	
-	//When an Effort Category is selected, fill the second choice box with the list of Deliverables
+	//When a Deliverable is selected, fill the second choice box with the list of Deliverables
 	//and select the default Deliverable
 	public void setDefaultDeliverables()
 	{
@@ -408,6 +408,7 @@ public class ControllerDefinitions extends Controller implements Initializable
 	{
 		if (choiceBoxSection.getValue() != "Life Cycle Steps") return;
 		if (choiceBoxList.getValue() == null) return;
+		if (choiceBox1.getValue() == null) return;
 		
 		//get the life cycle step
 		LifeCycleStep lifeCycleStep = getLifeCycleStepFromChoiceBox(choiceBoxList);
@@ -415,13 +416,13 @@ public class ControllerDefinitions extends Controller implements Initializable
 		//find the effort category and assign it to the LCS's default
 		lifeCycleStep.defaultEffortCategory = getEffortCategoryFromChoiceBox(choiceBox1);
 		
-		
 	}
 
 	public void changeDefaultDeliverable()
 	{
 		if (choiceBoxSection.getValue() != "Life Cycle Steps") return;
 		if (choiceBoxList.getValue() == null) return;
+		if (choiceBox2.getValue() == null) return;
 		
 		//get the life cycle step
 		LifeCycleStep lifeCycleStep = getLifeCycleStepFromChoiceBox(choiceBoxList);

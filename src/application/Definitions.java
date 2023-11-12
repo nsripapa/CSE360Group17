@@ -31,22 +31,21 @@ public class Definitions implements Serializable
 		deliverables = loadedDefinitions.deliverables;
 		interruptions = loadedDefinitions.interruptions;
 		defectCategories = loadedDefinitions.defectCategories;
+		
+		//predefined logs for testing and show casing========================================================================
+		EffortLog el = new EffortLog("11-12-2023", "08:30:44", "08:35:44", "5", "Problem Understanding", "Deliverables", "Project Plan");
+		projects.get(0).logs.effortLogs.add(el);
+		el = new EffortLog("11-19-2023", "12:30:44", "15:35:44", "10", "Conceptual Design Plan", "Plans", "Conceptual Design Plan");
+		projects.get(0).logs.effortLogs.add(el);
+		el = new EffortLog("11-19-2023", "12:30:44", "15:35:44", "10", "Requirements", "Plans", "Implementation Plan");
+		projects.get(1).logs.effortLogs.add(el);
+		
+		DefectLog dl = new DefectLog("123", "EXAMPLE details", "Finalizing", "Information Gathering", "Function", "Open", "");
+		projects.get(0).logs.defectLogs.add(dl);
 	}
 
-	private Definitions(Boolean load)
-	{
-		projects = loadedDefinitions.projects;
-		lifeCycleSteps = loadedDefinitions.lifeCycleSteps;
-		effortCategories = loadedDefinitions.effortCategories;
-		plans = loadedDefinitions.plans;
-		deliverables = loadedDefinitions.deliverables;
-		interruptions = loadedDefinitions.interruptions;
-		defectCategories = loadedDefinitions.defectCategories;
-	}
-	
 	private Definitions()
 	{
-		
 		try {
 			load();
 		} catch (ClassNotFoundException e) {
@@ -57,382 +56,6 @@ public class Definitions implements Serializable
 			e.printStackTrace();
 		}
 		
-		/*
-		projects = new ArrayList<>();
-		lifeCycleSteps = new ArrayList<>();
-		effortCategories = new ArrayList<>();
-		plans = new ArrayList<>();
-		deliverables = new ArrayList<>();
-		interruptions = new ArrayList<>();
-		defectCategories = new ArrayList<>();
-		
-		//start of predefined values-----------------------------------------------------------------------------------------------------------------------------
-		//start of predefined values-----------------------------------------------------------------------------------------------------------------------------
-		//start of predefined values-----------------------------------------------------------------------------------------------------------------------------
-		//start of predefined values-----------------------------------------------------------------------------------------------------------------------------
-		//start of predefined values-----------------------------------------------------------------------------------------------------------------------------
-
-		//PLANS
-		Plan plan = new Plan();
-		
-		plan.name = "Project Plan";
-		plans.add(plan);
-		
-		plan.name = "Risk Management Plan";
-		plans.add(plan);
-		
-		plan.name = "Conceptual Design Plan";
-		plans.add(plan);
-		
-		plan.name = "Detailed Design Plan";
-		plans.add(plan);
-		
-		plan.name = "Implementation Plan";
-		plans.add(plan);
-		
-		//DELIVERABLES
-		Deliverable deliverable = new Deliverable();
-		
-		deliverable.name = "Conceptual Design";
-		deliverables.add(deliverable);
-		
-		deliverable = new Deliverable();
-		deliverable.name = "Detailed Design";
-		deliverables.add(deliverable);
-		
-		deliverable = new Deliverable();
-		deliverable.name = "Test Cases";
-		deliverables.add(deliverable);
-		
-		deliverable = new Deliverable();
-		deliverable.name = "Solution";
-		deliverables.add(deliverable);
-		
-		deliverable = new Deliverable();
-		deliverable.name = "Reflection";
-		deliverables.add(deliverable);
-		
-		deliverable = new Deliverable();
-		deliverable.name = "Outline";
-		deliverables.add(deliverable);
-
-		deliverable = new Deliverable();
-		deliverable.name = "Draft";
-		deliverables.add(deliverable);
-
-		deliverable = new Deliverable();
-		deliverable.name = "Report";
-		deliverables.add(deliverable);
-
-		deliverable = new Deliverable();
-		deliverable.name = "User Defined";
-		deliverables.add(deliverable);
-
-		deliverable = new Deliverable();
-		deliverable.name = "Other";
-		deliverables.add(deliverable);
-		
-		//INTERRUPTIONS
-		Interruption interruption = new Interruption();
-		
-		interruption.name = "Break";
-		interruptions.add(interruption);
-		
-		interruption = new Interruption();
-		interruption.name = "Phone";
-		interruptions.add(interruption);
-
-		interruption = new Interruption();
-		interruption.name = "Teammate";
-		interruptions.add(interruption);
-
-		interruption = new Interruption();
-		interruption.name = "Visitor";
-		interruptions.add(interruption);
-
-		interruption = new Interruption();
-		interruption.name = "Other";
-		interruptions.add(interruption);
-		
-		
-		//DEFECT CATEGORIES
-		DefectCategory dc = new DefectCategory();
-		
-		dc.name = "Not Specified";
-		defectCategories.add(dc);
-		
-		dc = new DefectCategory();
-		dc.name = "Documentation";
-		defectCategories.add(dc);
-
-		dc = new DefectCategory();
-		dc.name = "Syntax";
-		defectCategories.add(dc);
-
-		dc = new DefectCategory();
-		dc.name = "Build, Package";
-		defectCategories.add(dc);
-
-		dc = new DefectCategory();
-		dc.name = "Assignment";
-		defectCategories.add(dc);
-
-		dc = new DefectCategory();
-		dc.name = "Interface";
-		defectCategories.add(dc);
-
-		dc = new DefectCategory();
-		dc.name = "Checking";
-		defectCategories.add(dc);
-
-		dc = new DefectCategory();
-		dc.name = "Data";
-		defectCategories.add(dc);
-
-		dc = new DefectCategory();
-		dc.name = "Function";
-		defectCategories.add(dc);
-
-		dc = new DefectCategory();
-		dc.name = "System";
-		defectCategories.add(dc);
-
-		dc = new DefectCategory();
-		dc.name = "Environment";
-		defectCategories.add(dc);
-		
-		//EFFORT CATEGORIES
-		EffortCategory ec = new EffortCategory();
-		
-		ec.name = "Plans";
-		effortCategories.add(ec);
-		
-		ec = new EffortCategory();
-		ec.name = "Deliverables";
-		effortCategories.add(ec);
-
-		ec = new EffortCategory();
-		ec.name = "Interruptions";
-		effortCategories.add(ec);
-
-		ec = new EffortCategory();
-		ec.name = "Defects";
-		effortCategories.add(ec);
-
-		ec = new EffortCategory();
-		ec.name = "Others";
-		effortCategories.add(ec);
-		
-		//LIFE CYCLE STEPS
-		LifeCycleStep lcs = new LifeCycleStep();
-		
-		lcs.name = "Problem Understanding";
-		lcs.defaultEffortCategory = lcs.getEffortCategory(effortCategories, "Deliverables");
-		lcs.defaultDeliverable = lcs.getDeliverable(deliverables, "Conceptual Design");
-		lifeCycleSteps.add(lcs);
-		
-		lcs = new LifeCycleStep();
-		lcs.name = "Conceptual Design Plan";
-		lcs.defaultEffortCategory = lcs.getEffortCategory(effortCategories, "Plans");
-		lcs.defaultDeliverable = lcs.getDeliverable(deliverables, "Test Cases");
-		lifeCycleSteps.add(lcs);
-
-		lcs = new LifeCycleStep();
-		lcs.name = "Requirements";
-		lcs.defaultEffortCategory = lcs.getEffortCategory(effortCategories, "Deliverables");
-		lcs.defaultDeliverable = lcs.getDeliverable(deliverables, "Conceptual Design");
-		lifeCycleSteps.add(lcs);
-
-		lcs = new LifeCycleStep();
-		lcs.name = "Conceptual Design";
-		lcs.defaultEffortCategory = lcs.getEffortCategory(effortCategories, "Deliverables");
-		lcs.defaultDeliverable = lcs.getDeliverable(deliverables, "Conceptual Design");
-		lifeCycleSteps.add(lcs);
-
-		lcs = new LifeCycleStep();
-		lcs.name = "Conceptual Design Review";
-		lcs.defaultEffortCategory = lcs.getEffortCategory(effortCategories, "Deliverables");
-		lcs.defaultDeliverable = lcs.getDeliverable(deliverables, "Conceptual Design");
-		lifeCycleSteps.add(lcs);
-
-		lcs = new LifeCycleStep();
-		lcs.name = "Detailed Design Plan";
-		lcs.defaultEffortCategory = lcs.getEffortCategory(effortCategories, "Plans");
-		lcs.defaultDeliverable = lcs.getDeliverable(deliverables, "Solution");
-		lifeCycleSteps.add(lcs);
-
-		lcs = new LifeCycleStep();
-		lcs.name = "Detailed Design/Prototype";
-		lcs.defaultEffortCategory = lcs.getEffortCategory(effortCategories, "Deliverables");
-		lcs.defaultDeliverable = lcs.getDeliverable(deliverables, "Conceptual Design");
-		lifeCycleSteps.add(lcs);
-
-		lcs = new LifeCycleStep();
-		lcs.name = "Detailed Design Review";
-		lcs.defaultEffortCategory = lcs.getEffortCategory(effortCategories, "Deliverables");
-		lcs.defaultDeliverable = lcs.getDeliverable(deliverables, "Conceptual Design");
-		lifeCycleSteps.add(lcs);
-
-		lcs = new LifeCycleStep();
-		lcs.name = "Implementation Plan";
-		lcs.defaultEffortCategory = lcs.getEffortCategory(effortCategories, "Plans");
-		lcs.defaultDeliverable = lcs.getDeliverable(deliverables, "Conceptual Design");
-		lifeCycleSteps.add(lcs);
-
-		lcs = new LifeCycleStep();
-		lcs.name = "Test Case Generation";
-		lcs.defaultEffortCategory = lcs.getEffortCategory(effortCategories, "Deliverables");
-		lcs.defaultDeliverable = lcs.getDeliverable(deliverables, "Test Cases");
-		lifeCycleSteps.add(lcs);
-
-		lcs = new LifeCycleStep();
-		lcs.name = "Solution Specification";
-		lcs.defaultEffortCategory = lcs.getEffortCategory(effortCategories, "Deliverables");
-		lcs.defaultDeliverable = lcs.getDeliverable(deliverables, "Solution");
-		lifeCycleSteps.add(lcs);
-
-		lcs = new LifeCycleStep();
-		lcs.name = "Solution Review";
-		lcs.defaultEffortCategory = lcs.getEffortCategory(effortCategories, "Deliverables");
-		lcs.defaultDeliverable = lcs.getDeliverable(deliverables, "Solution");
-		lifeCycleSteps.add(lcs);
-
-		lcs = new LifeCycleStep();
-		lcs.name = "Solution Implementation";
-		lcs.defaultEffortCategory = lcs.getEffortCategory(effortCategories, "Deliverables");
-		lcs.defaultDeliverable = lcs.getDeliverable(deliverables, "Solution");
-		lifeCycleSteps.add(lcs);
-
-		lcs = new LifeCycleStep();
-		lcs.name = "Unit/System Test";
-		lcs.defaultEffortCategory = lcs.getEffortCategory(effortCategories, "Deliverables");
-		lcs.defaultDeliverable = lcs.getDeliverable(deliverables, "Solution");
-		lifeCycleSteps.add(lcs);
-
-		lcs = new LifeCycleStep();
-		lcs.name = "Reflection";
-		lcs.defaultEffortCategory = lcs.getEffortCategory(effortCategories, "Deliverables");
-		lcs.defaultDeliverable = lcs.getDeliverable(deliverables, "Solution");
-		lifeCycleSteps.add(lcs);
-
-		lcs = new LifeCycleStep();
-		lcs.name = "Repository Update";
-		lcs.defaultEffortCategory = lcs.getEffortCategory(effortCategories, "Deliverables");
-		lcs.defaultDeliverable = lcs.getDeliverable(deliverables, "Solution");
-		lifeCycleSteps.add(lcs);
-
-		lcs = new LifeCycleStep();
-		lcs.name = "Planning";
-		lcs.defaultEffortCategory = lcs.getEffortCategory(effortCategories, "Plans");
-		lcs.defaultDeliverable = lcs.getDeliverable(deliverables, "Conceptual Design");
-		lifeCycleSteps.add(lcs);
-
-		lcs = new LifeCycleStep();
-		lcs.name = "Information Gathering";
-		lcs.defaultEffortCategory = lcs.getEffortCategory(effortCategories, "Deliverables");
-		lcs.defaultDeliverable = lcs.getDeliverable(deliverables, "Conceptual Design");
-		lifeCycleSteps.add(lcs);
-
-		lcs = new LifeCycleStep();
-		lcs.name = "Information Understanding";
-		lcs.defaultEffortCategory = lcs.getEffortCategory(effortCategories, "Deliverables");
-		lcs.defaultDeliverable = lcs.getDeliverable(deliverables, "Conceptual Design");
-		lifeCycleSteps.add(lcs);
-
-		lcs = new LifeCycleStep();
-		lcs.name = "Verifying";
-		lcs.defaultEffortCategory = lcs.getEffortCategory(effortCategories, "Deliverables");
-		lcs.defaultDeliverable = lcs.getDeliverable(deliverables, "Conceptual Design");
-		lifeCycleSteps.add(lcs);
-
-		lcs = new LifeCycleStep();
-		lcs.name = "Outlining";
-		lcs.defaultEffortCategory = lcs.getEffortCategory(effortCategories, "Deliverables");
-		lcs.defaultDeliverable = lcs.getDeliverable(deliverables, "Outline");
-		lifeCycleSteps.add(lcs);
-
-		lcs = new LifeCycleStep();
-		lcs.name = "Drafting";
-		lcs.defaultEffortCategory = lcs.getEffortCategory(effortCategories, "Deliverables");
-		lcs.defaultDeliverable = lcs.getDeliverable(deliverables, "Draft");
-		lifeCycleSteps.add(lcs);
-
-		lcs = new LifeCycleStep();
-		lcs.name = "Finalizing";
-		lcs.defaultEffortCategory = lcs.getEffortCategory(effortCategories, "Deliverables");
-		lcs.defaultDeliverable = lcs.getDeliverable(deliverables, "Report");
-		lifeCycleSteps.add(lcs);
-
-		lcs = new LifeCycleStep();
-		lcs.name = "Team Meeting";
-		lcs.defaultEffortCategory = lcs.getEffortCategory(effortCategories, "Deliverables");
-		lcs.defaultDeliverable = lcs.getDeliverable(deliverables, "Conceptual Design");
-		lifeCycleSteps.add(lcs);
-
-		lcs = new LifeCycleStep();
-		lcs.name = "Coach Meeting";
-		lcs.defaultEffortCategory = lcs.getEffortCategory(effortCategories, "Deliverables");
-		lcs.defaultDeliverable = lcs.getDeliverable(deliverables, "Conceptual Design");
-		lifeCycleSteps.add(lcs);
-
-		lcs = new LifeCycleStep();
-		lcs.name = "Stakeholder Meeting";
-		lcs.defaultEffortCategory = lcs.getEffortCategory(effortCategories, "Deliverables");
-		lcs.defaultDeliverable = lcs.getDeliverable(deliverables, "Conceptual Design");
-		lifeCycleSteps.add(lcs);
-		
-		//PROJECTS
-		Project project = new Project();
-		
-		project.name = "Business Project";
-		
-		project.lifeCycleSteps.add(project.getLifeCycleStep(lifeCycleSteps, "Planning"));
-		project.lifeCycleSteps.add(project.getLifeCycleStep(lifeCycleSteps, "Information Gathering"));
-		project.lifeCycleSteps.add(project.getLifeCycleStep(lifeCycleSteps, "Information Understanding"));
-		project.lifeCycleSteps.add(project.getLifeCycleStep(lifeCycleSteps, "Verifying"));
-		project.lifeCycleSteps.add(project.getLifeCycleStep(lifeCycleSteps, "Outlining"));
-		project.lifeCycleSteps.add(project.getLifeCycleStep(lifeCycleSteps, "Drafting"));
-		project.lifeCycleSteps.add(project.getLifeCycleStep(lifeCycleSteps, "Finalizing"));
-		project.lifeCycleSteps.add(project.getLifeCycleStep(lifeCycleSteps, "Team Meeting"));
-		project.lifeCycleSteps.add(project.getLifeCycleStep(lifeCycleSteps, "Coach Meeting"));
-		project.lifeCycleSteps.add(project.getLifeCycleStep(lifeCycleSteps, "Stakeholder Meeting"));
-		
-		projects.add(project);
-		
-		project = new Project();
-		project.name = "Development Project";
-		
-		project.lifeCycleSteps.add(project.getLifeCycleStep(lifeCycleSteps, "Problem Understanding"));
-		project.lifeCycleSteps.add(project.getLifeCycleStep(lifeCycleSteps, "Conceptual Design Plan"));
-		project.lifeCycleSteps.add(project.getLifeCycleStep(lifeCycleSteps, "Requirements"));
-		project.lifeCycleSteps.add(project.getLifeCycleStep(lifeCycleSteps, "Conceptual Design"));
-		project.lifeCycleSteps.add(project.getLifeCycleStep(lifeCycleSteps, "Conceptual Design Review"));
-		project.lifeCycleSteps.add(project.getLifeCycleStep(lifeCycleSteps, "Detailed Design Plan"));
-		project.lifeCycleSteps.add(project.getLifeCycleStep(lifeCycleSteps, "Detailed Design/Prototype"));
-		project.lifeCycleSteps.add(project.getLifeCycleStep(lifeCycleSteps, "Detailed Design Review"));
-		project.lifeCycleSteps.add(project.getLifeCycleStep(lifeCycleSteps, "Implementation Plan"));
-		project.lifeCycleSteps.add(project.getLifeCycleStep(lifeCycleSteps, "Test Case Generation"));
-		project.lifeCycleSteps.add(project.getLifeCycleStep(lifeCycleSteps, "Solution Specification"));
-		project.lifeCycleSteps.add(project.getLifeCycleStep(lifeCycleSteps, "Solution Review"));
-		project.lifeCycleSteps.add(project.getLifeCycleStep(lifeCycleSteps, "Solution Implementation"));
-		project.lifeCycleSteps.add(project.getLifeCycleStep(lifeCycleSteps, "Unit/System Test"));
-		project.lifeCycleSteps.add(project.getLifeCycleStep(lifeCycleSteps, "Reflection"));
-		project.lifeCycleSteps.add(project.getLifeCycleStep(lifeCycleSteps, "Repository Update"));
-		
-		projects.add(project);
-		*/
-		
-		//LOGS
-		
-		
-		
-
-
-		//end of predefined values-----------------------------------------------------------------------------------------------------------------------------
-		//end of predefined values-----------------------------------------------------------------------------------------------------------------------------
-		//end of predefined values-----------------------------------------------------------------------------------------------------------------------------
-		//end of predefined values-----------------------------------------------------------------------------------------------------------------------------
-		//end of predefined values-----------------------------------------------------------------------------------------------------------------------------
 	}
 	
 	List<Project> projects;
@@ -521,9 +144,7 @@ public class Definitions implements Serializable
 		       }
 		       return names;
 		}
-	 
-	 
-	 
+	  
 	 public static Definitions getInstance()
 	 {
 		 return instance;
@@ -531,6 +152,7 @@ public class Definitions implements Serializable
 	 
 }
 
+//CLASSES FOR DEFINITION TYPES --------------------------------------------------------------------------------------
 class Project implements Serializable
 {
 	private static final long serialVersionUID = 3248596783495307L;

@@ -23,6 +23,8 @@ public class ControllerLogs extends Controller implements Initializable
 	
 	public void displayLogs()
 	{
+		textAreaEffort.clear();
+		textAreaDefect.clear();
 		//get the project
 		Project project = null;
 		String projectName = choiceBoxProject.getValue();
@@ -41,12 +43,12 @@ public class ControllerLogs extends Controller implements Initializable
 		{
 			textAreaEffort.appendText(i + ". ");
 			
-			textAreaEffort.appendText(el.date + " ");
-			textAreaEffort.appendText(el.start + " ");
-			textAreaEffort.appendText(el.stop + " ");
-			textAreaEffort.appendText(el.time + " ");
-			textAreaEffort.appendText(el.lifeCycleStep + " ");
-			textAreaEffort.appendText(el.effortCategory + " ");
+			textAreaEffort.appendText(el.date + " | ");
+			textAreaEffort.appendText(el.start + " | ");
+			textAreaEffort.appendText(el.stop + " | ");
+			textAreaEffort.appendText(el.time + " | ");
+			textAreaEffort.appendText(el.lifeCycleStep + " | ");
+			textAreaEffort.appendText(el.effortCategory + " | ");
 			textAreaEffort.appendText(el.delivInterEtc);
 			
 			textAreaEffort.appendText("\n");
@@ -58,13 +60,13 @@ public class ControllerLogs extends Controller implements Initializable
 		{
 			textAreaDefect.appendText(i + ". ");
 			
-			textAreaDefect.appendText(dl.name + " ");
-			textAreaDefect.appendText(dl.detail + " ");
-			textAreaDefect.appendText(dl.injected + " ");
-			textAreaDefect.appendText(dl.removed + " ");
-			textAreaDefect.appendText(dl.category + " ");
-			textAreaDefect.appendText(dl.status + " ");
-			textAreaDefect.appendText(dl.fix + " ");
+			textAreaDefect.appendText(dl.name + " | ");
+			textAreaDefect.appendText(dl.detail + " | ");
+			textAreaDefect.appendText(dl.injected + " | ");
+			textAreaDefect.appendText(dl.removed + " | ");
+			textAreaDefect.appendText(dl.category + " | ");
+			textAreaDefect.appendText(dl.status + " | ");
+			textAreaDefect.appendText(dl.fix + " | ");
 			
 			textAreaDefect.appendText("\n");
 			i++;
