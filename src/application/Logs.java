@@ -54,6 +54,17 @@ class EffortLog implements Serializable
 		delivInterEtc = "";
 	}
 	
+	EffortLog(String date, String start, String stop, String time, String lifeCycleStep, String effortCategory, String delivInterEtc)
+	{
+		this.date = date;
+		this.start = start;
+		this.stop = stop;
+		this.time = time;
+		this.lifeCycleStep = lifeCycleStep;
+		this.effortCategory = effortCategory;
+		this.delivInterEtc = delivInterEtc;
+	}
+	
 	String date, start, stop, time, lifeCycleStep, effortCategory, delivInterEtc;
 }
 
@@ -69,6 +80,17 @@ class DefectLog implements Serializable
 		category = "";
 		status = "";
 		fix = "";
+	}
+	
+	DefectLog(String name, String detail, String injected, String removed, String category, String status, String fix)
+	{
+		this.name = name;
+		this.detail = detail;
+		this.injected = injected;
+		this.removed = removed;
+		this.category = category;
+		this.status = status;
+		this.fix = fix;
 	}
 	
 	String name, detail, injected, removed, category, status, fix;
