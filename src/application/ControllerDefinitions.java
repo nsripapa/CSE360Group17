@@ -2,6 +2,8 @@ package application;
 
 import java.io.Serializable;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import javafx.beans.value.ChangeListener;
@@ -23,7 +25,7 @@ public class ControllerDefinitions extends Controller implements Initializable
 	@FXML
 	private ChoiceBox<String> choiceBoxSection, choiceBoxList, choiceBox1, choiceBox2;
 	@FXML
-	private Button buttonAddList, buttonDeleteList, buttonEditList, buttonDeleteChoiceBox1, buttonDeleteChoiceBox2;
+	private Button buttonAddList, buttonDeleteList, buttonEditList, buttonDeleteChoiceBox1, buttonAddChoiceBox2;
 	@FXML
 	private TextField textField;
 	@FXML
@@ -48,6 +50,8 @@ public class ControllerDefinitions extends Controller implements Initializable
 				labelChoiceBox1.setVisible(true);
 				labelChoiceBox2.setVisible(false);
 				
+				buttonDeleteChoiceBox1.setVisible(true);
+				buttonAddChoiceBox2.setVisible(true);
 			}
 			break;
 		case ("Effort Categories"):
@@ -56,6 +60,9 @@ public class ControllerDefinitions extends Controller implements Initializable
 				choiceBoxList.setItems(FXCollections.observableArrayList(definitions.getEffortCategoryNames()));
 				labelChoiceBox1.setVisible(false);
 				labelChoiceBox2.setVisible(false);
+				
+				buttonDeleteChoiceBox1.setVisible(false);
+				buttonAddChoiceBox2.setVisible(false);
 			}
 			break;
 		case ("Life Cycle Steps"):
@@ -67,6 +74,9 @@ public class ControllerDefinitions extends Controller implements Initializable
 				labelChoiceBox1.setVisible(true);
 				labelChoiceBox2.setText("Deliverable Default");
 				labelChoiceBox2.setVisible(true);
+				
+				buttonDeleteChoiceBox1.setVisible(false);
+				buttonAddChoiceBox2.setVisible(false);
 			}
 			break;	
 		case ("Plans"):
@@ -75,6 +85,9 @@ public class ControllerDefinitions extends Controller implements Initializable
 				choiceBoxList.setItems(FXCollections.observableArrayList(definitions.getPlanNames()));
 				labelChoiceBox1.setVisible(false);
 				labelChoiceBox2.setVisible(false);
+				
+				buttonDeleteChoiceBox1.setVisible(false);
+				buttonAddChoiceBox2.setVisible(false);
 			}
 			break;
 		case ("Deliverables"):
@@ -83,6 +96,9 @@ public class ControllerDefinitions extends Controller implements Initializable
 				choiceBoxList.setItems(FXCollections.observableArrayList(definitions.getDeliverableNames()));
 				labelChoiceBox1.setVisible(false);
 				labelChoiceBox2.setVisible(false);
+				
+				buttonDeleteChoiceBox1.setVisible(false);
+				buttonAddChoiceBox2.setVisible(false);
 			}
 			break;
 		case ("Interruptions"):
@@ -91,6 +107,9 @@ public class ControllerDefinitions extends Controller implements Initializable
 				choiceBoxList.setItems(FXCollections.observableArrayList(definitions.getInterruptionNames()));
 				labelChoiceBox1.setVisible(false);
 				labelChoiceBox2.setVisible(false);
+				
+				buttonDeleteChoiceBox1.setVisible(false);
+				buttonAddChoiceBox2.setVisible(false);
 			}
 			break;
 		case ("Defect Categories"):
@@ -99,6 +118,9 @@ public class ControllerDefinitions extends Controller implements Initializable
 				choiceBoxList.setItems(FXCollections.observableArrayList(definitions.getDefectCategoryNames()));
 				labelChoiceBox1.setVisible(false);
 				labelChoiceBox2.setVisible(false);
+				
+				buttonDeleteChoiceBox1.setVisible(false);
+				buttonAddChoiceBox2.setVisible(false);
 			}
 			break;
 		}
@@ -146,7 +168,7 @@ public class ControllerDefinitions extends Controller implements Initializable
 		
 		
 		choiceBox1.setItems(FXCollections.observableArrayList(definitions.getEffortCategoryNames()));
-		choiceBox1.getSelectionModel().select(lifeCycleStep.defaultEffortCategory.name);
+		if(lifeCycleStep.defaultEffortCategory != null) choiceBox1.getSelectionModel().select(lifeCycleStep.defaultEffortCategory.name);
 	}
 	
 	//When an Effort Category is selected, fill the second choice box with the list of Deliverables
@@ -170,10 +192,9 @@ public class ControllerDefinitions extends Controller implements Initializable
 		}
 		
 		choiceBox2.setItems(FXCollections.observableArrayList(definitions.getDeliverableNames()));
-		choiceBox2.getSelectionModel().select(lifeCycleStep.defaultDeliverable.name);
+		if(lifeCycleStep.defaultDeliverable != null) choiceBox2.getSelectionModel().select(lifeCycleStep.defaultDeliverable.name);
 	}
 	
-
 	public void addListItem(MouseEvent e)
 	{
 		
@@ -348,7 +369,177 @@ public class ControllerDefinitions extends Controller implements Initializable
 			
 		}
 	}
-	@Override
+
+	public void addLCStoProject()
+	{
+		if (choiceBoxSection.getValue() != "Projects") return;
+		if (choiceBoxList.getValue() == null) return;
+		if (choiceBox2.getValue() == null) return;
+		
+		//get the current project
+		
+		String projectName = choiceBoxList.getValue();
+		Project project = null;
+		
+		for (Project p : definitions.projects)
+		{
+			if (p.name == projectName)
+			{
+				project = p;
+				break;
+			}
+		}
+		
+		//get the to-be-added life cycle step
+		String lcsName = choiceBox2.getValue();
+		LifeCycleStep lifeCycleStep = null;
+		
+		for (LifeCycleStep lcs : definitions.lifeCycleSteps)
+		{
+			if (lcs.name == lcsName)
+			{
+				lifeCycleStep = lcs;
+				break;
+			}
+		}
+		
+		project.lifeCycleSteps.add(lifeCycleStep);
+		setChoiceBox2LCS();
+		setProjectLifeCycleSteps();
+	}
+	
+	public void deleteLCSfromProject()
+	{
+		if (choiceBoxSection.getValue() != "Projects") return;
+		if (choiceBoxList.getValue() == null) return;
+		if (choiceBox1.getValue() == null) return;
+		
+		//get the current project
+		
+		String projectName = choiceBoxList.getValue();
+		Project project = null;
+		
+		for (Project p : definitions.projects)
+		{
+			if (p.name == projectName)
+			{
+				project = p;
+				break;
+			}
+		}
+		
+		//get the to-be-deleted life cycle step
+				String lcsName = choiceBox1.getValue();
+				
+				for (LifeCycleStep lcs : project.lifeCycleSteps)
+				{
+					if (lcs.name == lcsName)
+					{
+						project.lifeCycleSteps.remove(lcs);
+						break;
+					}
+				}
+				
+				setChoiceBox2LCS();
+				setProjectLifeCycleSteps();
+	}
+	
+	public void changeDefaultEffortCategory()
+	{
+		if (choiceBoxSection.getValue() != "Life Cycle Steps") return;
+		if (choiceBoxList.getValue() == null) return;
+		
+		//get the life cycle step
+		String lcsName = choiceBoxList.getValue();
+		LifeCycleStep lifeCycleStep = null;
+		
+		for (LifeCycleStep lcs : definitions.lifeCycleSteps)
+		{
+			if (lcs.name == lcsName)
+			{
+				lifeCycleStep = lcs;
+				break;
+			}
+		}
+		
+		//find the effort category and assign it to the LCS's default
+
+		String ecName = choiceBox1.getValue();
+		for (EffortCategory ec : definitions.effortCategories)
+		{
+			if (ec.name == ecName)
+			{
+				lifeCycleStep.defaultEffortCategory = ec;
+				break;
+			}
+		}
+		
+	}
+
+	public void changeDefaultDeliverable()
+	{
+		if (choiceBoxSection.getValue() != "Life Cycle Steps") return;
+		if (choiceBoxList.getValue() == null) return;
+		
+		//get the life cycle step
+			String lcsName = choiceBoxList.getValue();
+			LifeCycleStep lifeCycleStep = null;
+				
+			for (LifeCycleStep lcs : definitions.lifeCycleSteps)
+			{
+				if (lcs.name == lcsName)
+				{
+					lifeCycleStep = lcs;
+					break;
+				}
+			}
+		
+		//find the effort category and assign it to the LCS's default
+
+		String dName = choiceBox2.getValue();
+		for (Deliverable d : definitions.deliverables)
+		{
+			if (d.name == dName)
+			{
+				lifeCycleStep.defaultDeliverable = d;
+				break;
+			}
+		}
+		
+	}
+	
+	public void setChoiceBox2LCS()
+	{
+		if (choiceBoxSection.getValue() != "Projects") return;
+		if (choiceBoxList.getValue() == null) return;
+		
+		//get project
+		String projectName = choiceBoxList.getValue();
+		Project project = null;
+		
+		for (Project p : definitions.projects)
+		{
+			if (p.name == projectName)
+			{
+				project = p;
+				break;
+			}
+		}
+		
+		List<String> lifeCycleSteps = new ArrayList<>(); //the life cycle steps not mapped to the project
+		
+		for (LifeCycleStep lcs : definitions.lifeCycleSteps)
+		{
+			if(!project.lifeCycleSteps.contains(lcs))
+			{
+				lifeCycleSteps.add(lcs.name);
+			}
+		}
+		
+		choiceBox2.setItems(FXCollections.observableArrayList(lifeCycleSteps));
+	}
+	
+	@Override	
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
 		
@@ -369,6 +560,7 @@ public class ControllerDefinitions extends Controller implements Initializable
 			if (choiceBoxSection.getValue() == "Projects")
 			{
 				setProjectLifeCycleSteps();
+				setChoiceBox2LCS();
 			} else if (choiceBoxSection.getValue() == "Life Cycle Steps")
 			{
 				setDefaultEffortCategories();
@@ -378,6 +570,16 @@ public class ControllerDefinitions extends Controller implements Initializable
 				choiceBox1.getSelectionModel().clearSelection();
 				choiceBox2.getSelectionModel().clearSelection();
 			}
+		});
+		
+		choiceBox1.setOnAction(e -> {
+
+			changeDefaultEffortCategory();
+		});
+		
+		choiceBox2.setOnAction(e -> {
+
+			changeDefaultDeliverable();
 		});
 	}
 }
