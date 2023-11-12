@@ -378,32 +378,12 @@ public class ControllerDefinitions extends Controller implements Initializable
 		
 		//get the current project
 		
-		String projectName = choiceBoxList.getValue();
-		Project project = null;
-		
-		for (Project p : definitions.projects)
-		{
-			if (p.name == projectName)
-			{
-				project = p;
-				break;
-			}
-		}
+		Project project = getProjectFromChoiceBox(choiceBoxList);
 		
 		//get the to-be-added life cycle step
-		String lcsName = choiceBox2.getValue();
-		LifeCycleStep lifeCycleStep = null;
+		project.lifeCycleSteps.add(getLifeCycleStepFromChoiceBox(choiceBox2));
 		
-		for (LifeCycleStep lcs : definitions.lifeCycleSteps)
-		{
-			if (lcs.name == lcsName)
-			{
-				lifeCycleStep = lcs;
-				break;
-			}
-		}
 		
-		project.lifeCycleSteps.add(lifeCycleStep);
 		setChoiceBox2LCS();
 		setProjectLifeCycleSteps();
 	}
@@ -416,32 +396,12 @@ public class ControllerDefinitions extends Controller implements Initializable
 		
 		//get the current project
 		
-		String projectName = choiceBoxList.getValue();
-		Project project = null;
-		
-		for (Project p : definitions.projects)
-		{
-			if (p.name == projectName)
-			{
-				project = p;
-				break;
-			}
-		}
+		Project project = getProjectFromChoiceBox(choiceBoxList);
 		
 		//get the to-be-deleted life cycle step
-				String lcsName = choiceBox1.getValue();
-				
-				for (LifeCycleStep lcs : project.lifeCycleSteps)
-				{
-					if (lcs.name == lcsName)
-					{
-						project.lifeCycleSteps.remove(lcs);
-						break;
-					}
-				}
-				
-				setChoiceBox2LCS();
-				setProjectLifeCycleSteps();
+		project.lifeCycleSteps.remove(getLifeCycleStepFromChoiceBox(choiceBox1));
+		setProjectLifeCycleSteps();
+		setChoiceBox2LCS();
 	}
 	
 	public void changeDefaultEffortCategory()
@@ -450,29 +410,11 @@ public class ControllerDefinitions extends Controller implements Initializable
 		if (choiceBoxList.getValue() == null) return;
 		
 		//get the life cycle step
-		String lcsName = choiceBoxList.getValue();
-		LifeCycleStep lifeCycleStep = null;
-		
-		for (LifeCycleStep lcs : definitions.lifeCycleSteps)
-		{
-			if (lcs.name == lcsName)
-			{
-				lifeCycleStep = lcs;
-				break;
-			}
-		}
+		LifeCycleStep lifeCycleStep = getLifeCycleStepFromChoiceBox(choiceBoxList);
 		
 		//find the effort category and assign it to the LCS's default
-
-		String ecName = choiceBox1.getValue();
-		for (EffortCategory ec : definitions.effortCategories)
-		{
-			if (ec.name == ecName)
-			{
-				lifeCycleStep.defaultEffortCategory = ec;
-				break;
-			}
-		}
+		lifeCycleStep.defaultEffortCategory = getEffortCategoryFromChoiceBox(choiceBox1);
+		
 		
 	}
 
@@ -482,29 +424,10 @@ public class ControllerDefinitions extends Controller implements Initializable
 		if (choiceBoxList.getValue() == null) return;
 		
 		//get the life cycle step
-			String lcsName = choiceBoxList.getValue();
-			LifeCycleStep lifeCycleStep = null;
-				
-			for (LifeCycleStep lcs : definitions.lifeCycleSteps)
-			{
-				if (lcs.name == lcsName)
-				{
-					lifeCycleStep = lcs;
-					break;
-				}
-			}
+		LifeCycleStep lifeCycleStep = getLifeCycleStepFromChoiceBox(choiceBoxList);
 		
-		//find the effort category and assign it to the LCS's default
-
-		String dName = choiceBox2.getValue();
-		for (Deliverable d : definitions.deliverables)
-		{
-			if (d.name == dName)
-			{
-				lifeCycleStep.defaultDeliverable = d;
-				break;
-			}
-		}
+		//find the deliverable and assign it to the LCS's default
+		lifeCycleStep.defaultDeliverable = getDeliverableFromChoiceBox(choiceBox2);
 		
 	}
 	
@@ -514,20 +437,9 @@ public class ControllerDefinitions extends Controller implements Initializable
 		if (choiceBoxList.getValue() == null) return;
 		
 		//get project
-		String projectName = choiceBoxList.getValue();
-		Project project = null;
-		
-		for (Project p : definitions.projects)
-		{
-			if (p.name == projectName)
-			{
-				project = p;
-				break;
-			}
-		}
+		Project project = getProjectFromChoiceBox(choiceBoxList);
 		
 		List<String> lifeCycleSteps = new ArrayList<>(); //the life cycle steps not mapped to the project
-		
 		for (LifeCycleStep lcs : definitions.lifeCycleSteps)
 		{
 			if(!project.lifeCycleSteps.contains(lcs))

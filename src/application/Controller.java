@@ -18,6 +18,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -64,6 +65,67 @@ public class Controller implements Initializable
 		
 		Definitions definitions = (Definitions)ois.readObject();
 	}
+	
+	public Project getProjectFromChoiceBox(ChoiceBox<String> cb)
+	{
+		String pName = cb.getValue();
+		
+		for (Project p : definitions.projects)
+		{
+			if (p.name == pName)
+			{
+				return p;
+			}
+		}
+		
+		return null;
+	}
+	
+	public LifeCycleStep getLifeCycleStepFromChoiceBox(ChoiceBox<String> cb)
+	{
+		String lcsName = cb.getValue();
+		
+		for (LifeCycleStep lcs : definitions.lifeCycleSteps)
+		{
+			if (lcs.name == lcsName)
+			{
+				return lcs;
+			}
+		}
+		
+		return null;
+	}
+	
+	public EffortCategory getEffortCategoryFromChoiceBox(ChoiceBox<String> cb)
+	{
+		String ecName = cb.getValue();
+		
+		for (EffortCategory ec : definitions.effortCategories)
+		{
+			if (ec.name == ecName)
+			{
+				return ec;
+			}
+		}
+		
+		return null;
+	}
+	
+	public Deliverable getDeliverableFromChoiceBox(ChoiceBox<String> cb)
+	{
+		String dName = cb.getValue();
+		
+		for (Deliverable d : definitions.deliverables)
+		{
+			if (d.name == dName)
+			{
+				return d;
+			}
+		}
+		
+		return null;
+	}
+	
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {

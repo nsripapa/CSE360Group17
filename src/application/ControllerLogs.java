@@ -80,6 +80,14 @@ public class ControllerLogs extends Controller implements Initializable
 		
 		choiceBoxProject.setItems(FXCollections.observableArrayList(definitions.getProjectNames()));
 		
+		//predefined log values for testing---------------------------------------------------------------
+		EffortLog el = new EffortLog();
+		DefectLog dl = new DefectLog();
+		
+		Project project = definitions.projects.get(1);
+		//project.logs.effortLogs
+		
+		//-------------------------------------------------------------------------------------------------
 		choiceBoxProject.setOnAction(e -> {
 			if (choiceBoxProject.getValue() != null)
 			{
