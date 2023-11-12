@@ -16,6 +16,7 @@ import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 
@@ -28,44 +29,60 @@ public class ControllerEffortConsole extends Controller implements Initializable
 	private ControllerMenuBar menuBarController;
 	
 	@FXML
-	private Label timerLabel;
+	private Label timerLabel, userLabel;
 	
 	@FXML
-	private Label userLabel;
-	
+	private Button startButton, endButton;
 	@FXML
 	private ChoiceBox<String> choiceBoxProj, choiceBoxLCS, choiceBoxEC1, choiceBoxEC2;
 	
 	Definitions definitions = Definitions.getInstance();
 	
 	private List<String> projectList = definitions.getProjectNames();
-	private List<String> lcsList = definitions.getLifeCycleStepNames();
 	
 	String username;
 	PrivilegeLevels pl = new PrivilegeLevels();
 	DateTimeFormatter form = DateTimeFormatter.ofPattern("HH:mm:ss"); // Time format
 	
 	// starts logging time
-	public void startActivity(ActionEvent e) {
+	public void startActivity() {
+		
 		startTime = java.time.LocalTime.now();
 		date = java.time.LocalDate.now();
 		
 		timerLabel.setText("Activity started at time: " + startTime.format(form) + " on " + date.toString()); 
+		addLog(date.toString(), startTime.format(form));
 		
-		// add code here to start logging
 	}
 	
 	// stops logging time
-	public void endActivity(ActionEvent e) {
-		
+	public void endActivity() {
 		if(startTime != null) {
 			
-		endTime = java.time.LocalTime.now();
+			endTime = java.time.LocalTime.now();
 		
-		timerLabel.setText("Activity ended at time: " + endTime.format(form));
-		
-		// add code here to stop logging
+			timerLabel.setText("Activity ended at time: " + endTime.format(form));
+			addLog(date.toString(), endTime.format(form));
 		}
+	}
+	
+	public void addLog(String date, String time) {
+		EffortLog effortLog = new EffortLog();
+		effortLog.date = date;
+		effortLog.time = time;
+		effortLog.lifeCycleStep = choiceBoxLCS.getValue();
+		effortLog.effortCategory = choiceBoxEC1.getValue();
+		effortLog.delivInterEtc = choiceBoxEC2.getValue();
+		
+		int index = 0;
+		for(int i = 0; i < projectList.size(); i++) {
+			if(choiceBoxProj.getValue() == projectList.get(i)) {
+				index = i;
+			}
+		}
+		
+		Project project = definitions.projects.get(index);
+		project.getLogs().getEffortLogs().add(effortLog);
 	}
 	
 	// grab username from login screen
@@ -113,12 +130,13 @@ public class ControllerEffortConsole extends Controller implements Initializable
 		if(choiceBoxLCS.getValue() == null) return;
 		if(choiceBoxEC1.getValue() == null) return;
 		
-		choiceBoxEC2.setItems(null);
+		choiceBoxEC2.setItems(FXCollections.observableArrayList(definitions.getDeliverableNames()));
 	}
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
 		menuBarController.manageButtons("EffortConsole");
+		
 		choiceBoxProj.getItems().addAll(projectList);
 		
 		choiceBoxProj.setOnAction(e -> {
@@ -130,11 +148,18 @@ public class ControllerEffortConsole extends Controller implements Initializable
 		});
 		
 		choiceBoxEC1.setOnAction(e -> {
-			
+			getEffortCategoryList2();
 		});
 		
 		choiceBoxEC2.setOnAction(e -> {
 			
+		});
+		
+		startButton.setOnAction(e -> {
+			startActivity();
+		});
+		endButton.setOnAction(e -> {
+			endActivity();
 		});
 		
 		

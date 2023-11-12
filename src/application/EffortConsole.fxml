@@ -9,13 +9,13 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ControllerEffortConsole">
    <children>
-      <Button layoutX="79.0" layoutY="231.0" mnemonicParsing="false" onAction="#startActivity" onMouseClicked="#startActivity" prefWidth="387.0" text="Start an Activity" />
+      <Button fx:id="startButton" layoutX="79.0" layoutY="231.0" mnemonicParsing="false" onMouseClicked="#startActivity" prefWidth="387.0" text="Start an Activity" />
       <fx:include fx:id="menuBar" source="MenuBar.fxml" />
       <ChoiceBox fx:id="choiceBoxProj" layoutX="78.0" layoutY="373.0" prefHeight="26.0" prefWidth="426.0" />
       <ChoiceBox fx:id="choiceBoxLCS" layoutX="665.0" layoutY="373.0" prefHeight="26.0" prefWidth="454.0" />
       <ChoiceBox fx:id="choiceBoxEC1" layoutX="79.0" layoutY="453.0" prefHeight="26.0" prefWidth="426.0" />
       <ChoiceBox fx:id="choiceBoxEC2" layoutX="578.0" layoutY="453.0" prefHeight="26.0" prefWidth="542.0" />
-      <Button layoutX="734.0" layoutY="230.0" mnemonicParsing="false" onAction="#endActivity" prefHeight="26.0" prefWidth="387.0" text="Stop this Activity" />
+      <Button fx:id="endButton" layoutX="734.0" layoutY="230.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="387.0" text="Stop this Activity" />
       <Text layoutX="338.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" text="When you start a new Activity, press the &quot;Start an Activity&quot; button.">
          <font>
             <Font size="18.0" />
