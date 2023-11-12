@@ -19,8 +19,12 @@ public class Definitions
 		defectCategories = new ArrayList<>();
 		
 		
-		//predefined values
-		
+		//start of predefined values-----------------------------------------------------------------------------------------------------------------------------
+		//start of predefined values-----------------------------------------------------------------------------------------------------------------------------
+		//start of predefined values-----------------------------------------------------------------------------------------------------------------------------
+		//start of predefined values-----------------------------------------------------------------------------------------------------------------------------
+		//start of predefined values-----------------------------------------------------------------------------------------------------------------------------
+
 		//PLANS
 		Plan plan = new Plan();
 		
@@ -369,7 +373,12 @@ public class Definitions
 		project.lifeCycleSteps.add(project.getLifeCycleStep(lifeCycleSteps, "Repository Update"));
 		
 		projects.add(project);
-				
+		
+		//end of predefined values-----------------------------------------------------------------------------------------------------------------------------
+		//end of predefined values-----------------------------------------------------------------------------------------------------------------------------
+		//end of predefined values-----------------------------------------------------------------------------------------------------------------------------
+		//end of predefined values-----------------------------------------------------------------------------------------------------------------------------
+		//end of predefined values-----------------------------------------------------------------------------------------------------------------------------
 	}
 	
 	List<Project> projects;
@@ -380,6 +389,9 @@ public class Definitions
 	List<Interruption> interruptions;
 	List<DefectCategory> defectCategories;
 	
+	
+	//GETTING THE LIST OF PROJECTS/LIFECYCLESTEPS/ETC. IN STRING FORM FOR FILLING OUT CHOICEBOXES
+	//
 	public List<String> getProjectNames() 
 	{
         List<String> names = new ArrayList<>();
@@ -445,6 +457,7 @@ public class Definitions
 	        return names;
 	    }
 
+	 //GETS THE LIFE CYCLE STEPS ASSOCIATED TO A CERTAIN PROJECT
 	 public List<String> getProjectLifeCycleStepNames(Project project) 
 		{
 		       List<String> names = new ArrayList<>();
@@ -489,6 +502,11 @@ class Project
 		}
 		
 		return null;
+	}
+	
+	public Logs getLogs()
+	{
+		return logs;
 	}
 	
 }

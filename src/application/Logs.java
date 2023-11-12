@@ -22,14 +22,47 @@ public class Logs
 	 {
 		 return instance;
 	 }
+	
+	public List<EffortLog> getEffortLogs()
+	{
+		return effortLogs;
+	}
+	
+	public List<DefectLog> getDefectLogs()
+	{
+		return defectLogs;
+	}
 }
 
 class EffortLog
 {
+	EffortLog()
+	{
+		date = "";
+		start = "";
+		stop = "";
+		time = "";
+		lifeCycleStep = "";
+		effortCategory = "";
+		delivInterEtc = "";
+	}
+	
 	String date, start, stop, time, lifeCycleStep, effortCategory, delivInterEtc;
 }
 
 class DefectLog
 {
+	
+	DefectLog()
+	{
+		name = "";
+		detail = "";
+		injected = "";
+		removed = "";
+		category = "";
+		status = "";
+		fix = "";
+	}
+	
 	String name, detail, injected, removed, category, status, fix;
 }
