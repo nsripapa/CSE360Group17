@@ -1,6 +1,8 @@
 package application;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -10,9 +12,11 @@ import java.util.TimerTask;
 
 import javax.swing.RootPaneContainer;
 
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 
 public class ControllerEffortConsole extends Controller implements Initializable 
@@ -29,6 +33,14 @@ public class ControllerEffortConsole extends Controller implements Initializable
 	@FXML
 	private Label userLabel;
 	
+	@FXML
+	private ChoiceBox<String> choiceBoxProj, choiceBoxLCS, choiceBoxEC1, choiceBoxEC2;
+	
+	Definitions definitions = Definitions.getInstance();
+	
+	private List<String> projectList = definitions.getProjectNames();
+	private List<String> lcsList = definitions.getLifeCycleStepNames();
+	
 	String username;
 	PrivilegeLevels pl = new PrivilegeLevels();
 	DateTimeFormatter form = DateTimeFormatter.ofPattern("HH:mm:ss"); // Time format
@@ -39,6 +51,8 @@ public class ControllerEffortConsole extends Controller implements Initializable
 		date = java.time.LocalDate.now();
 		
 		timerLabel.setText("Activity started at time: " + startTime.format(form) + " on " + date.toString()); 
+		
+		// add code here to start logging
 	}
 	
 	// stops logging time
@@ -50,6 +64,7 @@ public class ControllerEffortConsole extends Controller implements Initializable
 		
 		timerLabel.setText("Activity ended at time: " + endTime.format(form));
 		
+		// add code here to stop logging
 		}
 	}
 	
@@ -72,10 +87,57 @@ public class ControllerEffortConsole extends Controller implements Initializable
 	}
 	
 	
+	public void getLifeCycleStepsList() {
+		if(choiceBoxProj.getValue() == null) {
+			return;
+		}
+		Project project = getProjectFromChoiceBox(choiceBoxProj);
+		
+		List<String> lifeCycleSteps = new ArrayList<>();
+		for(LifeCycleStep lcs : definitions.lifeCycleSteps) {
+			if(!project.lifeCycleSteps.contains(lcs)) {
+				lifeCycleSteps.add(lcs.name);
+			}
+		}
+		
+		choiceBoxLCS.setItems(FXCollections.observableArrayList(lifeCycleSteps));
+	}
+	public void getEffortCategoryList() {
+		if(choiceBoxProj.getValue() == null) return;
+		if(choiceBoxLCS.getValue() == null) return;
+		
+		choiceBoxEC1.setItems(FXCollections.observableArrayList(definitions.getEffortCategoryNames()));
+	}
+	public void getEffortCategoryList2() {
+		if(choiceBoxProj.getValue() == null) return;
+		if(choiceBoxLCS.getValue() == null) return;
+		if(choiceBoxEC1.getValue() == null) return;
+		
+		choiceBoxEC2.setItems(null);
+	}
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
 		menuBarController.manageButtons("EffortConsole");
+		choiceBoxProj.getItems().addAll(projectList);
+		
+		choiceBoxProj.setOnAction(e -> {
+			getLifeCycleStepsList();
+		});
+		
+		choiceBoxLCS.setOnAction(e -> {
+			getEffortCategoryList();
+		});
+		
+		choiceBoxEC1.setOnAction(e -> {
+			
+		});
+		
+		choiceBoxEC2.setOnAction(e -> {
+			
+		});
+		
+		
 	}
 }
 
