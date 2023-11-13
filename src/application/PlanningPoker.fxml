@@ -1,16 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ControllerPlanningPoker">
-   <children>
-      <fx:include fx:id="menuBar" source="MenuBar.fxml" />
-      <Text layoutX="417.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="P l a n n i n g   P o k e r">
+    <children>
+        <fx:include fx:id="menuBar" source="MenuBar.fxml" />
+
+        <Text layoutX="416.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="P l a n n i n g  P o k e r">
+            <font>
+                <Font size="36.0" />
+            </font>
+        </Text>
+
+        <ChoiceBox fx:id="projectChoiceBox" layoutX="95.0" layoutY="193.0" prefHeight="25.0" prefWidth="413.0" />
+
+        <ChoiceBox fx:id="lifeCycleStepChoiceBox" layoutX="95.0" layoutY="258.0" prefHeight="25.0" prefWidth="413.0" />
+
+        <ChoiceBox fx:id="effortCategoryChoiceBox" layoutX="95.0" layoutY="325.0" prefHeight="25.0" prefWidth="413.0" />
+
+        <ChoiceBox fx:id="specificEffortCategoryChoiceBox" layoutX="95.0" layoutY="364.0" prefHeight="25.0" prefWidth="413.0" />
+
+        <ChoiceBox fx:id="userEstimationChoiceBox" layoutX="478.0" layoutY="479.0" prefHeight="25.0" prefWidth="243.0" />
+
+        <Text layoutX="95.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select Project" wrappingWidth="366.78515625">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Text>
+
+        <!-- Add similar Text and ChoiceBox elements for Life Cycle Step, Effort Category, Specific Effort Category, and User Estimation -->
+
+        <Button fx:id="submitButton" layoutX="504.0" layoutY="517.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="204.0" text="Submit and Share!" />
+        <Button fx:id="estimateAgainButton" layoutX="515.0" layoutY="693.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="169.0" text="Estimate Again" />
+
+        <Label fx:id="yourEstimateLabel" layoutX="393.0" layoutY="568.0" text="">
          <font>
-            <Font size="36.0" />
+            <Font size="13.0" />
+         </font></Label>
+        <Label fx:id="lowestEstimateLabel" layoutX="393.0" layoutY="588.0" text="">
+         <font>
+            <Font size="13.0" />
+         </font></Label>
+        <Label fx:id="highestEstimateLabel" layoutX="393.0" layoutY="608.0" text="">
+         <font>
+            <Font size="13.0" />
+         </font></Label>
+        <Label fx:id="meanEstimateLabel" layoutX="393.0" layoutY="628.0" text="">
+         <font>
+            <Font size="13.0" />
+         </font></Label>
+      <Text layoutX="95.0" layoutY="384.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="366.78515625">
+         <font>
+            <Font size="18.0" />
          </font>
       </Text>
-   </children>
+      <Text layoutX="95.0" layoutY="319.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select Effort Category" wrappingWidth="366.78515625">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="95.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select Life Cycle Step" wrappingWidth="366.78515625">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="903.0" layoutY="792.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Effortlogger V2 Prototype (WORK IN PROGRESS BUILD)" />
+      <Text layoutX="521.0" layoutY="460.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Input your Estimate!" wrappingWidth="169.35849666086233">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Label fx:id="discussLabel" layoutX="499.0" layoutY="664.0" prefHeight="18.0" prefWidth="214.0"/>
+    </children>
 </AnchorPane>
