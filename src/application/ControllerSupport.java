@@ -12,6 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javax.mail.*;
 import javax.mail.internet.*;
+import java.util.regex.*;
 
 public class ControllerSupport {
 
@@ -25,6 +26,14 @@ public class ControllerSupport {
 	@FXML
 	private Label labelMessage;
 	
+	private static final String EMAIL_PATTERN = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+	private static final Pattern pattern = Pattern.compile(EMAIL_PATTERN);
+	
+	public static boolean validEmail(String email)
+	{
+		Matcher matcher = pattern.matcher(email);
+		return matcher.matches();
+	}
 	
 	//clicked send button
 	public void send(MouseEvent e)
@@ -37,7 +46,14 @@ public class ControllerSupport {
 		} else 
 		{
 			
-			
+			//make sure email is valid
+			if (!validEmail(textFieldEmail.getText()))
+			{
+				labelMessage.setText("Invalid Email Address");
+				labelMessage.setVisible(true);
+				return;
+			}
+				
 			java.util.Properties props = new java.util.Properties();
 			props.put("mail.smtp.host", "smtp.gmail.com");
 			props.put("mail.smtp.port", "587");
@@ -78,3 +94,5 @@ public class ControllerSupport {
 		}
 	}
 }
+
+

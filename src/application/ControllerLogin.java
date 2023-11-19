@@ -25,10 +25,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-public class ControllerLogin 
+public class ControllerLogin extends Controller
 {
 
 	
@@ -45,12 +47,31 @@ public class ControllerLogin
 	private Stage stage;
 	private Scene scene;
 	
+	Node node;
+	
 	UNandPW usersAndPasswords = new UNandPW();
 	
-	//on login button click
-	public void login(MouseEvent e) throws IOException
+	//Attempt to log in when the Log In button is clicked
+	public void loginButtonClicked(MouseEvent e) throws IOException
 	{
-		
+		node = (Node)e.getSource();
+		login();
+	}
+	
+	//Attempt to log in when the ENTER key is pressed
+	public void enterPressed(KeyEvent e) throws IOException
+	{
+		if (e.getCode().equals(KeyCode.ENTER))
+		{
+			node = (Node)e.getSource();
+			login();
+		}
+	}
+	
+	
+	//login
+	public void login() throws IOException
+	{
 		//get user and password from text fields
 		String user = textFieldUN.getText();
 		String password = String.valueOf(passwordField.getText());
@@ -58,7 +79,7 @@ public class ControllerLogin
 		//if user exists
 		if(usersAndPasswords.loginInfo.containsKey(user))
 		{
-			//if correct password
+			//if correct password, go to EffortConsole
 			if(usersAndPasswords.loginInfo.get(user).equals(password))
 			{
 				FXMLLoader loader = new FXMLLoader(getClass().getResource("EffortConsole.fxml"));
@@ -68,7 +89,7 @@ public class ControllerLogin
 				ec.setUserLabelText(user);
 				
 				
-				stage = (Stage)((Node)e.getSource()).getScene().getWindow();
+				stage = (Stage)node.getScene().getWindow();
 				scene = new Scene(root);
 				stage.setScene(scene);
 				stage.show();
