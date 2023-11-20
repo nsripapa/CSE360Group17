@@ -16,6 +16,9 @@ import javafx.scene.input.MouseEvent;
 import javax.mail.*;
 import javax.mail.internet.*;
 
+// Import properties to get user's OS version
+import java.util.Properties;
+
 
 public class ControllerFeedback {
 
@@ -33,7 +36,7 @@ public class ControllerFeedback {
 	//clicked send button
 	public void send(MouseEvent e) {
 		
-		// check if everything is filled out
+		// check if all boxes are filled out
 		if (textFieldEmail.getText().isEmpty() || textAreaIssue.getText().isEmpty()){
 			labelMessage.setText("Error sending request. Please fill out all required fields.");
 			labelMessage.setVisible(true);
@@ -52,37 +55,63 @@ public class ControllerFeedback {
 			//  This email to be replaced with an official Dev team email
 			Authenticator auth = new Authenticator() {
 			    protected PasswordAuthentication getPasswordAuthentication() {
-			        return new PasswordAuthentication("jacob.fett03@gmail.com", "jjuv ltxi tjdk lizq");
+			        return new PasswordAuthentication("apsuterdev@gmail.com", "rlpu oipy kwqx agmn");
 			    }
 			};
 			
 			
 			Session session = Session.getDefaultInstance(props, auth);
 			
+			// Set up email properties
 			// This email to be replaced with an official Dev team email
-			String to = "jfett2@asu.edu";
-			String from = "jacob.fett03@gmail.com";
+			String to = "apsuterdev@gmail.com";
+			String from = "apsuterdev@gmail.com";
 			String subject = "EffortLogger Feedback Ticket";
 			Message msg = new MimeMessage(session);
 			try {
+				
+				// Get the app version from SharedData
+				String applicationVersion = SharedData.getAppVersion();
+				// Get the username from SharedData
+				String username = SharedData.getUsername();
+				
 			    msg.setFrom(new InternetAddress(from));
 			    msg.setRecipient(Message.RecipientType.TO, new InternetAddress(to));
 			    msg.setSubject(subject);
-			    msg.setText("Email Address of user: " + textFieldEmail.getText() + "\n\nFeedback:\n\n" + textAreaIssue.getText());
+			    msg.setText("Username: " + username +
+			    		"\nEmail Address: " + textFieldEmail.getText() + 
+			    		"\nApplication Version: " + applicationVersion +
+			    		"\nJava Version: " + getJavaVersion() +
+	                    "\nOperating System: " + getOperatingSystem() +
+			    		"\n\nFeedback:\n" + textAreaIssue.getText());
 			    
-			    // Sends the message.
+			    
+			    // sends the message.
 			    Transport.send(msg);
 			    
 			    // update label to display result of request
 			    labelMessage.setText("Your feedback has been recorded, and is very valuable to us. You may now close this window.");
 			    labelMessage.setVisible(true);
+			    
+			    // clears the text fields after sent
+	            textFieldEmail.clear();
+	            textAreaIssue.clear();
 			}
-			
+			// catch error
 			catch (MessagingException ex) {
-			    // catch error
 				labelMessage.setText("Error sending Feedback message");
 			}
 			
 		}
 	}
+
+
+    // get user's OS properties
+    private String getOperatingSystem() {
+        return System.getProperty("os.name") + " " + System.getProperty("os.version");
+    }
+    // Get user's Java version
+    private String getJavaVersion() {
+        return System.getProperty("java.version");
+    }
 }

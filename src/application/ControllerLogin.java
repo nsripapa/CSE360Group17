@@ -93,8 +93,10 @@ public class ControllerLogin extends Controller
 				scene = new Scene(root);
 				stage.setScene(scene);
 				stage.show();
-
 				
+				// Sets the username in SharedData.java, so all controllers can access username easily
+			    SharedData.setUsername(user);
+
 				
 				
 			} else
