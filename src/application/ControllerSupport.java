@@ -14,7 +14,7 @@ import javax.mail.*;
 import javax.mail.internet.*;
 import java.util.regex.*;
 
-public class ControllerSupport {
+public class ControllerSupport extends Controller{
 
 	
 	@FXML

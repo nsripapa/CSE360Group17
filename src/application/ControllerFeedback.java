@@ -20,7 +20,7 @@ import javax.mail.internet.*;
 import java.util.Properties;
 
 
-public class ControllerFeedback {
+public class ControllerFeedback extends Controller {
 
 	
 	@FXML
