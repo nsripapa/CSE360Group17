@@ -20,7 +20,7 @@
          <font>
             <Font size="18.0" />
          </font></Text>
-      <Text layoutX="294.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="E f f o r t l o g g e r   C o n s o l e" textAlignment="CENTER" wrappingWidth="610.9366455078125">
+      <Text layoutX="294.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="E f f o r t l og g e r   C o n s o l e" textAlignment="CENTER" wrappingWidth="610.9366455078125">
          <font>
             <Font size="36.0" />
          </font>

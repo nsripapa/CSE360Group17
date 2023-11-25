@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -51,7 +52,7 @@ public class ControllerEffortConsole extends Controller implements Initializable
 		date = java.time.LocalDate.now();
 		
 		timerLabel.setText("Activity started at time: " + startTime.format(form) + " on " + date.toString()); 
-		addLog(date.toString(), startTime.format(form));
+		//addLog(date.toString(), startTime.format(form));
 		
 	}
 	
@@ -62,14 +63,20 @@ public class ControllerEffortConsole extends Controller implements Initializable
 			endTime = java.time.LocalTime.now();
 		
 			timerLabel.setText("Activity ended at time: " + endTime.format(form));
-			addLog(date.toString(), endTime.format(form));
+			addLog(date.toString());
 		}
 	}
 	
-	public void addLog(String date, String time) {
+	public void addLog(String date) {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+		Duration duration = Duration.between(startTime, endTime);
+		LocalTime durationAsTime = LocalTime.MIDNIGHT.plus(duration);
+		
 		EffortLog effortLog = new EffortLog();
 		effortLog.date = date;
-		effortLog.time = time;
+		effortLog.start = startTime.format(formatter);
+		effortLog.stop = endTime.format(formatter);
+		effortLog.time = durationAsTime.format(formatter);
 		effortLog.lifeCycleStep = choiceBoxLCS.getValue();
 		effortLog.effortCategory = choiceBoxEC1.getValue();
 		effortLog.delivInterEtc = choiceBoxEC2.getValue();

@@ -16,8 +16,8 @@
             <Font size="18.0" />
          </font>
       </Text>
-      <ChoiceBox layoutX="201.0" layoutY="189.0" prefHeight="26.0" prefWidth="365.0" />
-      <ChoiceBox layoutX="201.0" layoutY="268.0" prefHeight="26.0" prefWidth="760.0" />
+      <ChoiceBox fx:id="choiceBoxProject" layoutX="201.0" layoutY="189.0" prefHeight="26.0" prefWidth="365.0" />
+      <ChoiceBox fx:id="choiceBoxLogs" layoutX="201.0" layoutY="268.0" prefHeight="26.0" prefWidth="760.0" />
       <Button layoutX="841.0" layoutY="189.0" mnemonicParsing="false" text="Clear this effort log" />
       <Text layoutX="201.0" layoutY="262.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select the effort log entry to be modified and make it the current effort log entry">
          <font>

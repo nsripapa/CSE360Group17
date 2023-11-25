@@ -124,6 +124,21 @@ public class Definitions implements Serializable
 	        return names;
 	    }
 
+	 public List<String> getEffortLogs(Project project)
+	 {
+		 List<String> names = new ArrayList<>();
+		 int logCounter = 1;
+		 for (EffortLog el : project.logs.effortLogs)
+		 {
+			 String name = "" + logCounter + ". " + el.date + " (" + el.start
+					 + "-" + el.stop + " ) " + el.lifeCycleStep + "; " + el.effortCategory
+					 + "; " + el.delivInterEtc + ";";
+			 names.add(name);
+			 logCounter++;
+		 }
+		 
+		 return names;
+	 }
 	 //GETS THE LIFE CYCLE STEPS ASSOCIATED TO A CERTAIN PROJECT
 	 public List<String> getProjectLifeCycleStepNames(Project project) 
 		{
