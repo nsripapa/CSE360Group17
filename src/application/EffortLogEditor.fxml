@@ -39,18 +39,18 @@
             <Font size="18.0" />
          </font>
       </Text>
-      <Button layoutX="853.0" layoutY="589.0" mnemonicParsing="false" text="Update this entry" />
-      <Button layoutX="201.0" layoutY="665.0" mnemonicParsing="false" text="Delete this entry" />
-      <Button layoutX="787.0" layoutY="665.0" mnemonicParsing="false" text="Split this entry into two entries" />
-      <ChoiceBox layoutX="201.0" layoutY="435.0" prefWidth="150.0" />
-      <TextField layoutX="202.0" layoutY="352.0" promptText="Date" />
-      <TextField layoutX="432.0" layoutY="352.0" promptText="Start Time" />
-      <TextField layoutX="672.0" layoutY="352.0" promptText="End Time" />
+      <Button fx:id="buttonUpdate" layoutX="853.0" layoutY="589.0" mnemonicParsing="false" onAction="#updateLog" text="Update this entry" />
+      <Button fx:id="buttonDelete" layoutX="201.0" layoutY="665.0" mnemonicParsing="false" onAction="#deleteLog" text="Delete this entry" />
+      <Button fx:id="buttonSplit" layoutX="787.0" layoutY="665.0" mnemonicParsing="false" text="Split this entry into two entries" />
+      <ChoiceBox fx:id="choiceBoxLCS" layoutX="201.0" layoutY="435.0" prefWidth="150.0" />
+      <TextField fx:id="textFieldDate" layoutX="202.0" layoutY="352.0" promptText="Date" />
+      <TextField fx:id="textFieldStart" layoutX="432.0" layoutY="352.0" promptText="Start Time" />
+      <TextField fx:id="textFieldEnd" layoutX="672.0" layoutY="352.0" promptText="End Time" />
       <Text layoutX="482.0" layoutY="390.0" strokeType="OUTSIDE" strokeWidth="0.0" text="hh:mm:ss" />
       <Text layoutX="722.0" layoutY="390.0" strokeType="OUTSIDE" strokeWidth="0.0" text="hh:mm:ss" />
       <Text layoutX="243.0" layoutY="390.0" strokeType="OUTSIDE" strokeWidth="0.0" text="yyyy-mm-dd" />
-      <ChoiceBox layoutX="201.0" layoutY="506.0" prefWidth="150.0" />
-      <ChoiceBox layoutX="371.0" layoutY="506.0" prefHeight="26.0" prefWidth="590.0" />
+      <ChoiceBox fx:id="choiceBoxEC" layoutX="201.0" layoutY="506.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="choiceBoxEtc" layoutX="371.0" layoutY="506.0" prefHeight="26.0" prefWidth="590.0" />
       <Text layoutX="893.0" layoutY="782.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Effortlogger V2 Prototype (WORK IN PROGRESS BUILD)" />
       <Text layoutX="296.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="E f f o r t l o g g e r   L o g   E d i t o r" textAlignment="CENTER">
          <font>

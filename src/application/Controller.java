@@ -126,6 +126,11 @@ public class Controller implements Initializable
 		return null;
 	}
 	
+	public EffortLog getEffortLog(Project project, int logNumber)
+	{
+		return project.logs.effortLogs.get(logNumber);
+	}
+	
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {

@@ -139,6 +139,7 @@ public class Definitions implements Serializable
 		 
 		 return names;
 	 }
+	 
 	 //GETS THE LIFE CYCLE STEPS ASSOCIATED TO A CERTAIN PROJECT
 	 public List<String> getProjectLifeCycleStepNames(Project project) 
 		{
