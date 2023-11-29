@@ -2,15 +2,20 @@
 
 package application;
 
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Button;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.scene.control.TextInputDialog;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import javafx.scene.control.Alert;
 
@@ -19,126 +24,91 @@ public class ControllerDefectConsole extends Controller implements Initializable
     private ControllerMenuBar menuBarController;
 
     @FXML
-    private Label selectProjectLabel;
+    private Label selectProjectLabel, defectAttributesLabel;
+    
+    @FXML
+    private Button clearLogButton, createDefectButton,
+    closeButton, openButton, updateButton, deleteButton;
 
     @FXML
-    private ChoiceBox<String> projectSelectionChoiceBox, defectStatusChoiceBox;
-
-    @FXML
-    private Label defectAttributesLabel; 
+    private ChoiceBox<String> projectChoiceBox, defectChoiceBox,
+    defectCatChoiceBox, stepWhenInjectedChoiceBox, stepWhenRemovedChoiceBox,
+    fixDefectChoiceBox;
 
     @FXML
     private TextField defectNameTextField; 
     
     @FXML
-    private Button saveDefectButton;
+    private TextArea defectSymptoms;
     
-    @FXML
-    private Button createDefect;
-
-    @FXML
-    private TextField defectDescriptionTextField; 
-    @FXML
-    private Button deleteDefectButton;
-
-    @FXML
-    private Button close;  
-    
-    @FXML
-    private Button reopen;   
+    private List<String> defectList,
+    projectList = definitions.getProjectNames();
     
     
-    @FXML
-    private Button update; 
+    public void getDefectsList() {
+    	if (projectChoiceBox.getValue() == null) return;
+    	//defectChoiceBox.setItems(FXCollections.observableArrayList(defectList));
+    }
     
-    @FXML
-    private Button Fix;
+    public void getStepsList() {
+    	if (projectChoiceBox.getValue() == null) return;
+    	
+    	Project project = getProjectFromChoiceBox(projectChoiceBox);
+    	
+    	List<String> lifeCycleSteps = new ArrayList<>();
+    	for(LifeCycleStep lcs : definitions.lifeCycleSteps) {
+    		if(!project.lifeCycleSteps.contains(lcs)) {
+    			lifeCycleSteps.add(lcs.name);
+    		}
+    	}
+    	
+    	stepWhenInjectedChoiceBox.setItems(FXCollections.observableArrayList(lifeCycleSteps));
+    	stepWhenRemovedChoiceBox.setItems(FXCollections.observableArrayList(lifeCycleSteps));
+    }
     
-    @FXML
-    private Button ProceedToEffortConsole;
+    public void getDefectCategoryList() {
+    	defectCatChoiceBox.setItems(FXCollections.observableArrayList(definitions.getDefectCategoryNames()));
+    }
     
-    @FXML
-    private ChoiceBox<String> stepWhenInjected;
+    public void addLog() {
+    	DefectLog defectLog = new DefectLog();
+    	defectLog.name = defectNameTextField.getText();
+    	defectLog.injected = stepWhenInjectedChoiceBox.getValue();
+    	defectLog.removed = stepWhenRemovedChoiceBox.getValue();
+    	defectLog.fix = fixDefectChoiceBox.getValue();
+    	int index = 0;
+    	for(int i = 0; i < projectList.size(); i++) {
+    		if(projectChoiceBox.getValue() == projectList.get(i)) {
+    			index = i;
+    		}
+    	}
+    	
+    	Project project = definitions.projects.get(index);
+    	project.getLogs().getDefectLogs().add(defectLog);
+    }
     
-    @FXML
-    private ChoiceBox<String> stepWhenRemoved;
+    public void deleteDefect(int i) {
+    	Project project = definitions.projects.get(i);
+    	project.getLogs().getDefectLogs().remove(i);
+    }
     
+    public void fixDefect(int i) {
+    	deleteDefect(i);
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         menuBarController.manageButtons("DefectConsole");
-        initializeProjectSelectionChoiceBox();
-        saveDefectButton.setOnAction(event -> updateDefect());
-        stepWhenInjected.getItems().addAll(
-                "Problem Understanding",
-                "Conceptual Design Plan",
-                "Requirements",
-                "Conceptual Design",
-                "Conceptual Design Review",
-                "Solution Review"
-        );  
         
-        stepWhenRemoved.getItems().addAll(
-                "Problem Understanding",
-                "Conceptual Design Plan",
-                "Requirements",
-                "Conceptual Design",
-                "Conceptual Design Review",
-                "Solution Review"
-        );  
-    
         
-    }
-
-    private void initializeProjectSelectionChoiceBox() {
-  
-        projectSelectionChoiceBox.getItems().addAll("Business Project", "Development Project");
-
-     
-        projectSelectionChoiceBox.setOnAction(event -> selectProject());
-    }
-
-    private void selectProject() {
-        String selectedProject = projectSelectionChoiceBox.getValue();
-        if (selectedProject != null) {
-            
-            System.out.println("Selected Project: " + selectedProject);
-        } else {
-            System.out.println("No project selected.");
-        }
-    }
-    
-    @FXML
-    private void createNewDefect() {   
+        projectChoiceBox.getItems().addAll(definitions.getProjectNames());
         
-        TextInputDialog dialog = new TextInputDialog();
-        dialog.setTitle("Create New Defect");
-        dialog.setHeaderText("Create a New Defect");
-        dialog.setContentText("Please enter the name of the new defect:");
-
-        Optional<String> result = dialog.showAndWait();
-        result.ifPresent(defectName -> {
-            if (!defectName.trim().isEmpty()) {
-              
-                System.out.println("New defect created: " + defectName);
-            } else {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Error");
-                alert.setHeaderText("Invalid Defect Name");
-                alert.setContentText("The name of the defect cannot be empty.");
-                alert.showAndWait();
-            }
+        projectChoiceBox.setOnAction(e -> {
+        	getDefectsList();
+        	getStepsList();
+        	// getDefectCategoryList();
         });
-    }
-
-
-    
-	
-    
-    private void updateDefect() {
-        String projectName = projectSelectionChoiceBox.getValue();
-        String defectName = defectNameTextField.getText();
-        String defectDescription = defectDescriptionTextField.getText();
-        System.out.println("Saved defect in project: " + projectName + " with name: " + defectName + ", Description: " + defectDescription);
+        
+        
     }
 }

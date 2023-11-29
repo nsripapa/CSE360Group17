@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ControllerDefectConsole">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ControllerDefectConsole">
    <children>
       <fx:include fx:id="menuBar" source="MenuBar.fxml" />
       <Text layoutX="415.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="D e f e c t   C o n s o l e" textAlignment="CENTER">
@@ -17,9 +17,9 @@
             <Font size="36.0" />
          </font>
       </Text>
-      <ChoiceBox layoutX="150.0" layoutY="148.0" prefHeight="26.0" prefWidth="488.0" />
-      <ChoiceBox layoutX="150.0" layoutY="231.0" prefHeight="26.0" prefWidth="488.0" />
-      <TextField layoutX="150.0" layoutY="331.0" prefHeight="26.0" prefWidth="449.0" promptText="Num Defect Name" />
+      <ChoiceBox fx:id="projectChoiceBox" layoutX="150.0" layoutY="148.0" prefHeight="26.0" prefWidth="488.0" />
+      <ChoiceBox fx:id="defectChoiceBox" layoutX="150.0" layoutY="231.0" prefHeight="26.0" prefWidth="488.0" />
+      <TextField fx:id="defectNameTextField" layoutX="150.0" layoutY="331.0" prefHeight="26.0" prefWidth="449.0" promptText="Num Defect Name" />
       <Text layoutX="150.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select the project">
          <font>
             <Font size="18.0" />
@@ -35,13 +35,13 @@
             <Font size="18.0" />
          </font>
       </Text>
-      <Button layoutX="723.0" layoutY="148.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="174.0" text="Clear this Defect Log" />
-      <Button layoutX="723.0" layoutY="231.0" mnemonicParsing="false" prefWidth="174.0" text="Create a new Defect" />
-      <Button layoutX="666.0" layoutY="331.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="73.0" text="Close" />
-      <Button layoutX="767.0" layoutY="331.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="74.0" text="Open" />
-      <TextArea layoutX="150.0" layoutY="400.0" prefHeight="102.0" prefWidth="748.0" promptText="Defect Symptons or Cause/Resolution" />
-      <ChoiceBox layoutX="150.0" layoutY="560.0" prefHeight="26.0" prefWidth="226.0" />
-      <ChoiceBox layoutX="411.0" layoutY="560.0" prefHeight="26.0" prefWidth="225.0" />
+      <Button fx:id="clearLogButton" layoutX="723.0" layoutY="148.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="174.0" text="Clear this Defect Log" />
+      <Button fx:id="createDefectButton" layoutX="723.0" layoutY="231.0" mnemonicParsing="false" prefWidth="174.0" text="Create a new Defect" />
+      <Button fx:id="closeButton" layoutX="666.0" layoutY="331.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="73.0" text="Close" />
+      <Button fx:id="openButton" layoutX="767.0" layoutY="331.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="74.0" text="Open" />
+      <TextArea fx:id="defectSymptoms" layoutX="150.0" layoutY="400.0" prefHeight="102.0" prefWidth="748.0" promptText="Defect Symptoms or Cause/Resolution" />
+      <ChoiceBox fx:id="stepWhenInjectedChoiceBox" layoutX="150.0" layoutY="560.0" prefHeight="26.0" prefWidth="226.0" />
+      <ChoiceBox fx:id="stepWhenRemovedChoiceBox" layoutX="411.0" layoutY="560.0" prefHeight="26.0" prefWidth="225.0" />
       <ChoiceBox layoutX="671.0" layoutY="560.0" prefHeight="26.0" prefWidth="226.0" />
       <Text layoutX="150.0" layoutY="554.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Step when injected">
          <font>
@@ -58,14 +58,15 @@
             <Font size="18.0" />
          </font>
       </Text>
-      <TextField layoutX="590.0" layoutY="619.0" prefHeight="26.0" prefWidth="308.0" promptText="Fix" />
       <Label layoutX="150.0" layoutY="618.0" text="No attributes have been saved yet!">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Button layoutX="147.0" layoutY="689.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="240.0" text="Update the current defect" />
-      <Button layoutX="401.0" layoutY="689.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="240.0" text="Delete the current defect" />
+      <Button fx:id="updateButton" layoutX="147.0" layoutY="689.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="240.0" text="Update the current defect" />
+      <Button fx:id="deleteButton" layoutX="401.0" layoutY="689.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="240.0" text="Delete the current defect" />
       <Text layoutX="893.0" layoutY="782.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Effortlogger V2 Prototype (WORK IN PROGRESS BUILD)" />
+      <ChoiceBox fx:id="fixDefectChoiceBox" layoutX="628.0" layoutY="619.0" prefHeight="26.0" prefWidth="270.0" />
+      <Text layoutX="591.0" layoutY="637.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fix:" />
    </children>
 </AnchorPane>
