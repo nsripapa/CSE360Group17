@@ -40,14 +40,26 @@ public class ControllerDefectConsole extends Controller implements Initializable
     
     @FXML
     private TextArea defectSymptoms;
-    
-    private List<String> defectList,
-    projectList = definitions.getProjectNames();
+
+	private List<String> defectList = null;
+    private List<String> projectList = definitions.getProjectNames();
     
     
     public void getDefectsList() {
     	if (projectChoiceBox.getValue() == null) return;
-    	//defectChoiceBox.setItems(FXCollections.observableArrayList(defectList));
+    	Project project = getProjectFromChoiceBox(projectChoiceBox);
+    	List<DefectLog> defLogs = project.getLogs().getDefectLogs();
+    	
+    	for(int i = 0; i < defLogs.size(); i ++) {
+    		defectList.add(defLogs.get(i).name);
+    		System.out.println(defLogs.get(i).name);
+    	}
+    	
+    	if (defectList == null) return;
+    	
+    	defectChoiceBox.setItems(FXCollections.observableArrayList(defectList));
+    	
+    	
     }
     
     public void getStepsList() {
@@ -70,7 +82,7 @@ public class ControllerDefectConsole extends Controller implements Initializable
     	defectCatChoiceBox.setItems(FXCollections.observableArrayList(definitions.getDefectCategoryNames()));
     }
     
-    public void addLog() {
+    public void addDefLog() {
     	DefectLog defectLog = new DefectLog();
     	defectLog.name = defectNameTextField.getText();
     	defectLog.injected = stepWhenInjectedChoiceBox.getValue();
@@ -90,12 +102,17 @@ public class ControllerDefectConsole extends Controller implements Initializable
     public void deleteDefect(int i) {
     	Project project = definitions.projects.get(i);
     	project.getLogs().getDefectLogs().remove(i);
+    	System.out.println("Defect Deleted");
     }
     
     public void fixDefect(int i) {
-    	deleteDefect(i);
+    	
     }
 
+    public void createDefect() {
+    	addDefLog();
+    	System.out.println("Defect Created");
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         menuBarController.manageButtons("DefectConsole");
@@ -107,6 +124,9 @@ public class ControllerDefectConsole extends Controller implements Initializable
         	getDefectsList();
         	getStepsList();
         	// getDefectCategoryList();
+        });
+        createDefectButton.setOnAction(e-> {
+        	createDefect();
         });
         
         
