@@ -1,4 +1,4 @@
-//The DefectConsole intends to capture the information about the defects found in the projects and do so in a very straightforward manner. 
+//The DefectConsole intends to capture the information about the defects found in the projects and do so in a fairly straightforward manner. 
 
 package application;
 
