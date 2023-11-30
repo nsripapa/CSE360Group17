@@ -131,6 +131,10 @@ public class Controller implements Initializable
 		return project.logs.effortLogs.get(logNumber);
 	}
 	
+	public DefectLog getDefectLog(Project project, int logNumber)
+	{
+		return project.logs.defectLogs.get(logNumber);
+	}
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {

@@ -42,7 +42,7 @@
       <TextArea fx:id="defectSymptoms" layoutX="150.0" layoutY="400.0" prefHeight="102.0" prefWidth="748.0" promptText="Defect Symptoms or Cause/Resolution" />
       <ChoiceBox fx:id="stepWhenInjectedChoiceBox" layoutX="150.0" layoutY="560.0" prefHeight="26.0" prefWidth="226.0" />
       <ChoiceBox fx:id="stepWhenRemovedChoiceBox" layoutX="411.0" layoutY="560.0" prefHeight="26.0" prefWidth="225.0" />
-      <ChoiceBox layoutX="671.0" layoutY="560.0" prefHeight="26.0" prefWidth="226.0" />
+      <ChoiceBox fx:id="defectCatChoiceBox" layoutX="671.0" layoutY="560.0" prefHeight="26.0" prefWidth="226.0" />
       <Text layoutX="150.0" layoutY="554.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Step when injected">
          <font>
             <Font size="18.0" />
@@ -58,7 +58,7 @@
             <Font size="18.0" />
          </font>
       </Text>
-      <Label layoutX="150.0" layoutY="618.0" text="No attributes have been saved yet!">
+      <Label fx:id="defectAttributesLabel" layoutX="150.0" layoutY="618.0" text="No attributes have been saved yet!">
          <font>
             <Font size="18.0" />
          </font>
@@ -68,5 +68,7 @@
       <Text layoutX="893.0" layoutY="782.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Effortlogger V2 Prototype (WORK IN PROGRESS BUILD)" />
       <ChoiceBox fx:id="fixDefectChoiceBox" layoutX="628.0" layoutY="619.0" prefHeight="26.0" prefWidth="270.0" />
       <Text layoutX="591.0" layoutY="637.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fix:" />
+      <Text fx:id="statusText" layoutX="710.0" layoutY="321.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Closed" wrappingWidth="73.60000000000014" />
+      <Text layoutX="666.0" layoutY="321.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Status:" />
    </children>
 </AnchorPane>

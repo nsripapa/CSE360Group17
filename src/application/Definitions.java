@@ -140,6 +140,22 @@ public class Definitions implements Serializable
 		 return names;
 	 }
 	 
+	 public List<String> getDefectLogs(Project project) 
+	 {
+		List<String> names = new ArrayList<>();
+		int defectCounter = 1;
+		for(DefectLog dl : project.logs.defectLogs) 
+		{
+			String name = "" + defectCounter + " | " + dl.name + " | " + dl.detail + " | " 
+					+ dl.injected + " | " + dl.removed + " | " + dl.category + " | " + dl.status 
+					+ " | " + dl.fix;
+			names.add(name);
+			defectCounter++;
+		}
+		
+		return names;
+	 }
+	 
 	 //GETS THE LIFE CYCLE STEPS ASSOCIATED TO A CERTAIN PROJECT
 	 public List<String> getProjectLifeCycleStepNames(Project project) 
 		{
