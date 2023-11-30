@@ -1,6 +1,4 @@
-//Author: Ribhay Singh
-//This is the basic layout of how the test cases will be carried out. 
-//For the sake of reference and simplicity, I have decided to test the UserName and Password function of the program 
+
 
 package application;
 
