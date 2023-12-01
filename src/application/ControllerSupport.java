@@ -26,9 +26,11 @@ public class ControllerSupport extends Controller{
 	@FXML
 	private Label labelMessage;
 	
+	// Possible characters in an email
 	private static final String EMAIL_PATTERN = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
 	private static final Pattern pattern = Pattern.compile(EMAIL_PATTERN);
 	
+	// Method to validate that the email entered is legit
 	public static boolean validEmail(String email)
 	{
 		Matcher matcher = pattern.matcher(email);
@@ -53,7 +55,8 @@ public class ControllerSupport extends Controller{
 				labelMessage.setVisible(true);
 				return;
 			}
-				
+			
+			// email smtp setup code
 			java.util.Properties props = new java.util.Properties();
 			props.put("mail.smtp.host", "smtp.gmail.com");
 			props.put("mail.smtp.port", "587");
@@ -75,6 +78,8 @@ public class ControllerSupport extends Controller{
 			String to = "jfett2@asu.edu";
 			String from = "jacob.fett03@gmail.com";
 			String subject = "EffortLogger Support Ticket";
+			
+			// main body for the email
 			Message msg = new MimeMessage(session);
 			try {
 			    msg.setFrom(new InternetAddress(from));

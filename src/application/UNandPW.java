@@ -8,6 +8,7 @@ public class UNandPW {
 	//for prototype we use a HashMap and store the credentials in memory
 	HashMap<String, String> loginInfo = new HashMap<String, String>();
 	
+	// Username and Passwords to login
 	UNandPW()
 	{
 		
