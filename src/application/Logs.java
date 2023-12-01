@@ -18,6 +18,8 @@ public class Logs implements Serializable
 	List<EffortLog> effortLogs;
 	List<DefectLog> defectLogs;
 	
+	// Constructur method to create new Logs
+	
 	Logs()
 	{
 		effortLogs = new ArrayList<>();
@@ -43,6 +45,8 @@ public class Logs implements Serializable
 
 class EffortLog implements Serializable
 {
+	
+	// Constructor to create a new effortlog with no inputs
 	EffortLog()
 	{
 		date = "";
@@ -54,6 +58,7 @@ class EffortLog implements Serializable
 		delivInterEtc = "";
 	}
 	
+	// Constructor to create a new effortlog with user inputted inputs
 	EffortLog(String date, String start, String stop, String time, String lifeCycleStep, String effortCategory, String delivInterEtc)
 	{
 		this.date = date;
@@ -71,6 +76,7 @@ class EffortLog implements Serializable
 class DefectLog implements Serializable
 {
 	
+	// Constructor to create a new defectlog with no inputs
 	DefectLog()
 	{
 		name = "";
@@ -82,6 +88,7 @@ class DefectLog implements Serializable
 		fix = "";
 	}
 	
+	// Constructor to create a new defectlog with user inputted inputs
 	DefectLog(String name, String detail, String injected, String removed, String category, String status, String fix)
 	{
 		this.name = name;
